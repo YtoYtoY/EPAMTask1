@@ -17,6 +17,7 @@ namespace Chess.Logging
                 Stream fs = File.Create(Path.Combine(DataLoggerPath, $"log - [{DateTime.Now.ToString("dd/MM/yy H/mm/ss")}].txt"));
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
+                    sw.WriteLine('[' + DateTime.Now.ToString("dd/MM/yy H/mm/ss") + "] -- Data logging started ");
                     foreach (var item in Information.LogText)
                     {
                         sw.WriteLine(item.ToString());

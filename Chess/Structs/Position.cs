@@ -1,4 +1,5 @@
 ﻿using Chess.Classes;
+using Chess.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,13 +38,17 @@ namespace Chess.Structs
             if (position.Row < GlobalConstants.FirstRowNum
                 || position.Row > GlobalConstants.LastRowNum)
             {
-                throw new IndexOutOfRangeException("Selected row position on the board is not valid!");
+                string ex = "Selected row position on the board is not valid!";
+                Information.AddLog("Exception: " + ex);
+                throw new IndexOutOfRangeException(ex);
             }
 
             if (position.Col < GlobalConstants.FirstColNum
                 || position.Col > GlobalConstants.LastColNum)
             {
-                throw new IndexOutOfRangeException("Selected column position on the board is not valid!");
+                string ex = "Selected column position on the board is not valid!";
+                Information.AddLog("Exception: " + ex);
+                throw new IndexOutOfRangeException(ex);
             }
         }
     }

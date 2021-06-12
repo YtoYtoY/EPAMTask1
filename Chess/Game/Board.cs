@@ -51,8 +51,8 @@ namespace Chess.Board
         {
             int arrRow = this.GetArrayRow(position.Row);
             int arrCol = this.GetArrayCol(position.Col);
-            return this.board[arrRow, arrCol];
             Information.AddLog("Get figure at position [" + position.Row + ";" + position.Col + "]");
+            return this.board[arrRow, arrCol];
         }
 
         public void MoveFigureAtPosition(IFigure figure, Position from, Position to)

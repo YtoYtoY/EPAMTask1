@@ -1,6 +1,7 @@
 ﻿using Chess.Classes;
 using Chess.Enum;
 using Chess.Interfaces;
+using Chess.Logging;
 using Chess.Structs;
 using System;
 using System.Collections.Generic;
@@ -37,13 +38,11 @@ namespace Chess.Game
 
         public void Initialize(IGameInitialization gameInitializationStrategy)
         {
-            // TODO: remove using JustChess.Players and use the input for players
-            // TODO: BUG: if players are changed - board is reversed
             this.players = new List<IPlayer>
             {
                 new Player("1", ChessColor.Black),
                 new Player("2", ChessColor.White)
-            }; // this.input.GetPlayers(GlobalConstants.StandardGameNumberOfPlayers);
+            };
 
             this.SetFirstPlayerIndex();
             gameInitializationStrategy.Initialize(this.players, this.board);
@@ -71,6 +70,7 @@ namespace Chess.Game
                 }
                 catch (Exception ex)
                 {
+                    Information.AddLog(ex.Message);
                     this.currentPlayerIndex--;
                 }
             }
@@ -132,12 +132,16 @@ namespace Chess.Game
         {
             if (figure == null)
             {
-                throw new InvalidOperationException(string.Format("Position {0}{1} is empty!", from.Col, from.Row));
+                string ex = string.Format("Position {0}{1} is empty!", from.Col, from.Row);
+                Information.AddLog(ex);
+                throw new InvalidOperationException(ex);
             }
 
             if (figure.Color != player.Color)
             {
-                throw new InvalidOperationException(string.Format("Figure at {0}{1} is not yours!", from.Col, from.Row));
+                string ex = string.Format("Figure at {0}{1} is not yours!", from.Col, from.Row);
+                Information.AddLog(ex);
+                throw new InvalidOperationException(ex);
             }
         }
 
