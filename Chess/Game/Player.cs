@@ -1,6 +1,7 @@
 ﻿using Chess.Classes;
 using Chess.Enum;
 using Chess.Interfaces;
+using Chess.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,10 @@ namespace Chess.Game
 
         public Player(string name, ChessColor color)
         {
-            this.Name = name;
-            this.figures = new List<IFigure>();
-            this.Color = color;
+            Name = name;
+            figures = new List<IFigure>();
+            Color = color;
+            Information.AddLog("New " + color.ToString() + "chess player: " + name);
         }
 
         public void AddFigure(IFigure figure)
@@ -33,8 +35,6 @@ namespace Chess.Game
         public void RemoveFigure(IFigure figure)
         {
             ObjectValidator.CheckIfObjectIsNull(figure, GlobalErrorMessages.NullFigureErrorMessage);
-
-            // TODO: check figure and player color
             this.CheckIfFigureDoesNotExist(figure);
             this.figures.Remove(figure);
         }
@@ -43,7 +43,9 @@ namespace Chess.Game
         {
             if (this.figures.Contains(figure))
             {
-                throw new InvalidOperationException("This player already owns this figure!");
+                string ex = Name + ": This player already owns this figure!";
+                Information.AddLog(ex + " - " +figure.ToString());
+                throw new InvalidOperationException(ex);
             }
         }
 
@@ -51,7 +53,9 @@ namespace Chess.Game
         {
             if (!this.figures.Contains(figure))
             {
-                throw new InvalidOperationException("This player does not own this figure!");
+                string ex = Name + ": This player does not own this figure!";
+                Information.AddLog(ex + " - " + figure.ToString());
+                throw new InvalidOperationException(ex);
             }
         }
     }

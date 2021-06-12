@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chess.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,12 @@ namespace Chess.Classes
 {
     public static class ObjectValidator
     {
-        public static void CheckIfObjectIsNull(object obj, string errorMessage = "")
+        public static void CheckIfObjectIsNull(object obj, string errorMessage)
         {
             if (obj == null)
             {
-                throw new NullReferenceException(GlobalErrorMessages.NullFigureErrorMessage);
+                Information.AddLog(errorMessage);
+                throw new NullReferenceException(errorMessage);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Chess.Classes;
 using Chess.Interfaces;
+using Chess.Logging;
 using Chess.Structs;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace Chess.Board
             this.TotalRows = rows;
             this.TotalCols = cols;
             this.board = new IFigure[rows, cols];
+            Information.AddLog("Board added");
         }
 
         public void AddFigure(IFigure figure, Position position)
@@ -31,6 +33,7 @@ namespace Chess.Board
             int arrRow = this.GetArrayRow(position.Row);
             int arrCol = this.GetArrayCol(position.Col);
             this.board[arrRow, arrCol] = figure;
+            Information.AddLog("Added \"" + figure.GetType().Name + "\" piece to square [" + position.Row + ";" + position.Col + "]");
         }
 
         public void RemoveFigure(Position position)
@@ -40,6 +43,8 @@ namespace Chess.Board
             int arrRow = this.GetArrayRow(position.Row);
             int arrCol = this.GetArrayCol(position.Col);
             this.board[arrRow, arrCol] = null;
+            Information.AddLog("Removed \"" + GetFigureAtPosition(position).GetType().Name + "\" piece from square [" + position.Row + ";" + position.Col + "]");
+
         }
 
         public IFigure GetFigureAtPosition(Position position)
@@ -47,6 +52,7 @@ namespace Chess.Board
             int arrRow = this.GetArrayRow(position.Row);
             int arrCol = this.GetArrayCol(position.Col);
             return this.board[arrRow, arrCol];
+            Information.AddLog("Get figure at position [" + position.Row + ";" + position.Col + "]");
         }
 
         public void MoveFigureAtPosition(IFigure figure, Position from, Position to)
@@ -58,6 +64,7 @@ namespace Chess.Board
             int arrToRow = this.GetArrayRow(to.Row);
             int arrToCol = this.GetArrayCol(to.Col);
             this.board[arrToRow, arrToCol] = figure;
+            Information.AddLog("Figure \"" + figure.GetType().Name + "\" moved from square [" + from.Row + ";" + from.Col + "] to square [" + to.Row + ";" + to.Col + "]");
         }
 
         private int GetArrayRow(int chessRow)

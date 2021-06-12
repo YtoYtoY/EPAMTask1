@@ -1,6 +1,7 @@
 ﻿using Chess.Classes;
 using Chess.Enum;
 using Chess.Interfaces;
+using Chess.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;

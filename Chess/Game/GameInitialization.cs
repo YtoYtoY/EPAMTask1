@@ -1,6 +1,7 @@
 ﻿using Chess.Classes;
 using Chess.Figures;
 using Chess.Interfaces;
+using Chess.Logging;
 using Chess.Structs;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,7 @@ namespace Chess.Game
 
             this.AddPawnsToBoardRow(secondPlayer, board, 2);
             this.AddArmyToBoardRow(secondPlayer, board, 1);
+            Information.AddLog("Game created");
         }
 
         private void AddPawnsToBoardRow(IPlayer player, IBoard board, int chessRow)
@@ -54,6 +56,7 @@ namespace Chess.Game
                 var position = new Position(chessRow, (char)(i + 'a'));
                 board.AddFigure(pawn, position);
             }
+            Information.AddLog("Pawns added");
         }
 
         private void AddArmyToBoardRow(IPlayer player, IBoard board, int chessRow)
@@ -66,18 +69,23 @@ namespace Chess.Game
                 var position = new Position(chessRow, (char)(i + 'a'));
                 board.AddFigure(figureInstance, position);
             }
+            Information.AddLog("Army added");
         }
 
         private void ValidateStrategy(ICollection<IPlayer> players, IBoard board)
         {
             if (players.Count != 2)
             {
-                throw new InvalidOperationException("Standard Start Game Initialization Strategy needs exactly two players!");
+                string ex = "Standard Start Game Initialization Strategy needs exactly two players!";
+                Information.AddLog("Exception: " + ex);
+                throw new InvalidOperationException(ex);
             }
 
             if (board.TotalRows != BoardTotalRowsAndCols || board.TotalCols != BoardTotalRowsAndCols)
             {
-                throw new InvalidOperationException("Standard Start Game Initialization Strategy needs 8x8 board!");
+                string ex = "Standard Start Game Initialization Strategy needs 8x8 board!";
+                Information.AddLog("Exception: " + ex);
+                throw new InvalidOperationException(ex);
             }
         }
     }
