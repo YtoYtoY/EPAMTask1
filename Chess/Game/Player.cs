@@ -15,14 +15,14 @@ namespace Chess.Game
         public string Name { get; private set; }
         public ChessColor Color { get; private set; }
 
-        private readonly ICollection<IFigure> figures;
+        public readonly ICollection<IFigure> figures;
 
         public Player(string name, ChessColor color)
         {
             Name = name;
             figures = new List<IFigure>();
             Color = color;
-            Information.AddLog("New " + color.ToString() + "chess player: " + name);
+            Information.AddLog("New " + color.ToString() + " chess player: " + name);
         }
 
         public void AddFigure(IFigure figure)

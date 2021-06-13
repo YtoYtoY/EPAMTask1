@@ -8,18 +8,17 @@ namespace TestProgram.TestLogger
     public class LoggerUnitTest
     {
         [TestMethod]
-        public void DataWriter_UnitTest()
+        public void DataWriter_TestMethod()
         {
             DataRegister logger = new DataRegister();
-            var information = new Information();
-            information.AddLog("Test1");
-            information.AddLog("Test2");
-            information.AddLog("Test3");
-            information.AddLog("Test4");
-            information.AddLog("Test5");
-            information.AddLog("Test6");
-            logger.WriteLogData(information.LogText);
-            //Assert.AreEqual(0, 0);
+            Information.AddLog("Test1");
+            Information.AddLog("Test2");
+            Information.AddLog("Test3");
+            Information.AddLog("Test4");
+            Information.AddLog("Test5");
+            Information.AddLog("Test6");
+            logger.WriteLogData();
+
         }
     }
 }

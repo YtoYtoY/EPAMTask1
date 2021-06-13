@@ -12,7 +12,7 @@ namespace Chess.Logging
 
         public static void AddLog(string info)
         {
-            LogText.Add('[' +DateTime.Now.ToString("dd/MM/yy H/mm/ss") + "] -- " + info.ToString());
+            LogText.Add('[' +DateTime.Now.ToString("H/mm/ss") + "] -- " + info.ToString());
         }
     }
 }

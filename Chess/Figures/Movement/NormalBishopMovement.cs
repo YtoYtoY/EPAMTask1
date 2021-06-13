@@ -12,14 +12,13 @@ namespace Chess.Figures.Movement
 {
     public class NormalBishopMovement : IMovement
     {
-        private const string BishopInvalidMove = "{0}s can move diagonally!";
+        private const string BishopInvalidMove = "Figure can move only diagonally!";
 
         public void ValidateMove(IFigure figure, IBoard board, Move move)
         {
             var rowDistance = Math.Abs(move.From.Row - move.To.Row);
             var colDistance = Math.Abs(move.From.Col - move.To.Col);
 
-            // TODO: extract to method
             var other = figure.Color == ChessColor.White ? ChessColor.Black : ChessColor.White;
 
             if (rowDistance != colDistance)

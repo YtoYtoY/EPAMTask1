@@ -17,8 +17,10 @@ namespace Chess.Classes
             Color = color;
             Information.AddLog("Created " + color + " figure - " + this.GetType().Name);
         }
-
-
         public abstract ICollection<IMovement> Move(IMovementStrategy strategy);
+        public override string ToString()
+        {
+            return Color.ToString() + "; " + this.GetType().Name;
+        }
     }
 }

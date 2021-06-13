@@ -20,5 +20,6 @@ namespace Chess.Figures
         {
             return strategy.GetMovements(this.GetType().Name);
         }
+        
     }
 }

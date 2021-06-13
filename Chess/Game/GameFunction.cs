@@ -3,6 +3,7 @@ using Chess.Enum;
 using Chess.Interfaces;
 using Chess.Logging;
 using Chess.Structs;
+using Chess.Game;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,38 +14,44 @@ namespace Chess.Game
 {
     public class GameFunction : IGameFunction
     {
-        private readonly IInputProvider input;
         private readonly IBoard board;
+        public string Command { get; private set; }
         private readonly IMovementStrategy movementStrategy;
 
         private IList<IPlayer> players;
 
         private int currentPlayerIndex;
 
-        public GameFunction(IInputProvider inputProvider)
+        public GameFunction()
         {
-            this.input = inputProvider;
-            this.movementStrategy = new NormalMovementStrategy();
-            this.board = new Board();
+            movementStrategy = new NormalMovementStrategy();
+            board = new Board();
         }
 
         public IEnumerable<IPlayer> Players
         {
             get
             {
-                return new List<IPlayer>(this.players);
+                return new List<IPlayer>(players);
+            }
+        }
+        public IBoard Board
+        {
+            get
+            {
+                return this.Board;
             }
         }
 
         public void Initialize(IGameInitialization gameInitializationStrategy)
         {
-            this.players = new List<IPlayer>
+            players = new List<IPlayer>
             {
                 new Player("1", ChessColor.Black),
                 new Player("2", ChessColor.White)
             };
 
-            this.SetFirstPlayerIndex();
+            SetFirstPlayerIndex();
             gameInitializationStrategy.Initialize(this.players, this.board);
         }
 
@@ -55,23 +62,23 @@ namespace Chess.Game
                 IFigure figure = null;
                 try
                 {
-                    var player = this.GetNextPlayer();
-                    var move = this.input.GetNextPlayerMove(player);
+                    var player = GetNextPlayer();
+                    var move = InputHandler.CreateMoveFromCommand(Command);
                     var from = move.From;
                     var to = move.To;
-                    figure = this.board.GetFigureAtPosition(from);
-                    this.CheckIfPlayerOwnsFigure(player, figure, from);
-                    this.CheckIfToPositionIsEmpty(figure, to);
+                    figure = board.GetFigureAtPosition(from);
+                    CheckIfPlayerOwnsFigure(player, figure, from);
+                    CheckIfToPositionIsEmpty(figure, to);
 
-                    var availableMovements = figure.Move(this.movementStrategy);
-                    this.ValidateMovements(figure, availableMovements, move);
+                    var availableMovements = figure.Move(movementStrategy);
+                    ValidateMovements(figure, availableMovements, move);
 
-                    this.board.MoveFigureAtPosition(figure, from, to);
+                    board.MoveFigureAtPosition(figure, from, to);
                 }
                 catch (Exception ex)
                 {
                     Information.AddLog(ex.Message);
-                    this.currentPlayerIndex--;
+                    currentPlayerIndex--;
                 }
             }
         }
@@ -81,7 +88,7 @@ namespace Chess.Game
             throw new NotImplementedException();
         }
 
-        private void ValidateMovements(IFigure figure, IEnumerable<IMovement> availableMovements, Move move)
+        public void ValidateMovements(IFigure figure, IEnumerable<IMovement> availableMovements, Move move)
         {
             var validMoveFound = false;
             var foundException = new Exception();
@@ -89,12 +96,13 @@ namespace Chess.Game
             {
                 try
                 {
-                    movement.ValidateMove(figure, this.board, move);
+                    movement.ValidateMove(figure, board, move);
                     validMoveFound = true;
                     break;
                 }
                 catch (Exception ex)
                 {
+                    Information.AddLog(ex.Message);
                     foundException = ex;
                 }
             }
@@ -107,11 +115,11 @@ namespace Chess.Game
 
         private void SetFirstPlayerIndex()
         {
-            for (int i = 0; i < this.players.Count; i++)
+            for (int i = 0; i < players.Count; i++)
             {
-                if (this.players[i].Color == ChessColor.White)
+                if (players[i].Color == ChessColor.White)
                 {
-                    this.currentPlayerIndex = i - 1;
+                    currentPlayerIndex = i - 1;
                     return;
                 }
             }
@@ -119,16 +127,16 @@ namespace Chess.Game
 
         private IPlayer GetNextPlayer()
         {
-            this.currentPlayerIndex++;
-            if (this.currentPlayerIndex >= this.players.Count)
+            currentPlayerIndex++;
+            if (currentPlayerIndex >= players.Count)
             {
-                this.currentPlayerIndex = 0;
+                currentPlayerIndex = 0;
             }
 
-            return this.players[this.currentPlayerIndex];
+            return players[currentPlayerIndex];
         }
 
-        private void CheckIfPlayerOwnsFigure(IPlayer player, IFigure figure, Position from)
+        public void CheckIfPlayerOwnsFigure(IPlayer player, IFigure figure, Position from)
         {
             if (figure == null)
             {
@@ -145,9 +153,9 @@ namespace Chess.Game
             }
         }
 
-        private void CheckIfToPositionIsEmpty(IFigure figure, Position to)
+        public void CheckIfToPositionIsEmpty(IFigure figure, Position to)
         {
-            var figureAtPosition = this.board.GetFigureAtPosition(to);
+            var figureAtPosition = board.GetFigureAtPosition(to);
             if (figureAtPosition != null && figureAtPosition.Color == figure.Color)
             {
                 throw new InvalidOperationException(string.Format("You already have a figure at {0}{1}!", to.Col, to.Row));

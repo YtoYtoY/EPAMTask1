@@ -34,6 +34,8 @@ namespace Chess.Figures.Movement
 
             if (color == ChessColor.White)
             {
+                int p = from.Row;
+                int k = to.Row;
                 if (from.Row + 1 == to.Row && this.CheckDiagonalMove(from, to))
                 {
                     if (this.CheckOtherFigureIfValid(board, to, other))
@@ -101,6 +103,8 @@ namespace Chess.Figures.Movement
 
         private bool CheckDiagonalMove(Position from, Position to)
         {
+            char p = (char)(from.Col + 1);
+            char k = to.Col;
             return from.Col + 1 == to.Col || from.Col - 1 == to.Col;
         }
     }

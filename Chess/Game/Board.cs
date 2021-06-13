@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess.Board
+namespace Chess.Game
 {
     public class Board : IBoard
     {
@@ -42,17 +42,17 @@ namespace Chess.Board
 
             int arrRow = this.GetArrayRow(position.Row);
             int arrCol = this.GetArrayCol(position.Col);
-            this.board[arrRow, arrCol] = null;
             Information.AddLog("Removed \"" + GetFigureAtPosition(position).GetType().Name + "\" piece from square [" + position.Row + ";" + position.Col + "]");
-
+            this.board[arrRow, arrCol] = null;
         }
 
         public IFigure GetFigureAtPosition(Position position)
         {
             int arrRow = this.GetArrayRow(position.Row);
             int arrCol = this.GetArrayCol(position.Col);
-            Information.AddLog("Get figure at position [" + position.Row + ";" + position.Col + "]");
-            return this.board[arrRow, arrCol];
+            if(board[arrRow, arrCol] != null)
+                Information.AddLog("Get figure at position [" + position.Row + ";" + position.Col + "] - " + board[arrRow, arrCol].ToString());
+            return board[arrRow, arrCol];
         }
 
         public void MoveFigureAtPosition(IFigure figure, Position from, Position to)
