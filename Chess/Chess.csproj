@@ -84,6 +84,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Structs\Move.cs" />
     <Compile Include="Structs\Position.cs" />
+    <Compile Include="TestFigures\BishopTest.cs" />
+    <Compile Include="TestFigures\KingTest.cs" />
+    <Compile Include="TestFigures\KnightTest.cs" />
+    <Compile Include="TestFigures\PawnTest.cs" />
+    <Compile Include="TestFigures\QueenTest.cs" />
+    <Compile Include="TestFigures\RookTest.cs" />
+    <Compile Include="TestGame\GameUnitTest.cs" />
+    <Compile Include="TestLogger\LoggerUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
