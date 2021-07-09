@@ -18,7 +18,7 @@ namespace Chess.Figures
 
         public override ICollection<IMovement> Move(IMovementStrategy strategy)
         {
-            return strategy.GetMovements(this.GetType().Name);
+            return strategy.GetMovements(GetType().Name);
         }
     }
 }
