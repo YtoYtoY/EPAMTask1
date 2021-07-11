@@ -18,5 +18,7 @@ namespace CargoTransportation.Constants
 
         public const string FileTruckException = "Track error in file. The data may be incorrect in the file!";
         public const string FileSemitrailerException = "Semitrailer error in file. The data may be incorrect in the file!";
+
+        public const string NewTestProductException = "Error. The current object is invalid for this transport type!";
     }
 }

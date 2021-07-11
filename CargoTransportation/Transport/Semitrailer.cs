@@ -8,6 +8,7 @@ namespace CargoTransportation.Transport
 {
     public abstract class Semitrailer
     {
+        protected KeyValuePair<int, string> specificType { get; set; }
         public Semitrailer(double maxWeight, double value)
         {
             MaxWeight = maxWeight;
@@ -19,13 +20,22 @@ namespace CargoTransportation.Transport
         public double CurrentWeight { get; set; }
         public double Value { get; set; }  
 
-        public static double MaxWeight;
+        private double MaxWeight;
 
         public abstract void LoaddSemiTrailer(Cargo.Cargo obj);
         public abstract void UnloadSemitrailer(Cargo.Cargo obj);
 
 
-        public abstract Semitrailer Create(double weight, double value);
+        public abstract Semitrailer Create(double weight, double value, int key);
 
+        public virtual KeyValuePair<int, string> GetTrailerType()
+        {
+            return specificType;
+        }
+
+        public double GetWeight()
+        {
+            return MaxWeight;
+        }
     }
 }

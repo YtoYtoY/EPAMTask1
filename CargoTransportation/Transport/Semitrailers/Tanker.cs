@@ -8,19 +8,25 @@ using System.Threading.Tasks;
 
 namespace CargoTransportation.Trasnsport.Semitrailers
 {
-    public class Tanker : Semitrailer
+    public class Tanker : Semitrailer 
     {
-        public Tanker(double maxWeight, double value) : base(maxWeight, value) { }
-
-        public override Semitrailer Create(double weight, double value)
+        public Tanker(double maxWeight, double value) : base(maxWeight, value) 
         {
-            return new Tanker(weight, value);
+            specificType = new KeyValuePair<int, string>(1, this.GetType().Name);
+        }
+
+        public override Semitrailer Create(double weight, double value, int key)
+        {
+            if (key == specificType.Key)
+                return new Tanker(weight, value);
+            else
+                return null;
         }
 
         public override void LoaddSemiTrailer(Cargo.Cargo obj)
         {
 
-            if (CurrentWeight + obj.Weight < MaxWeight && obj.Weight > 0)
+            if (CurrentWeight + obj.Weight < this.GetWeight() && obj.Weight > 0)
             {
                 if(CurrentProducts == null)
                 {

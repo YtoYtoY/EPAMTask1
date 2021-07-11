@@ -8,13 +8,9 @@ namespace CargoTransportation.Cargo.Products
 {
     public class Food : Cargo
     {
-        public Food(string name, KeyValuePair<double, double> temperature, double weight)
+        public Food(string name, KeyValuePair<double, double> temperature, double weight) : base(name, temperature, weight)
         {
-            Type = "Продукты питания";
-            Name = name;
-            MinTemperature = temperature.Key;
-            MaxTemperature = temperature.Value;
-            Weight = weight;
+            Type = this.GetType().Name;
         }
     }
 }

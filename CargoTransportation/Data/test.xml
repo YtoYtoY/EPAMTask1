@@ -5,7 +5,7 @@
       <TrailerWeight>26000</TrailerWeight>
   </Truck>
   <Semitrailer>
-      <Type>Tanker</Type>
+      <Type>1</Type>
       <Weight>15000</Weight>
 	  <Value>1000</Value>
   </Semitrailer>
@@ -18,12 +18,12 @@
       <TrailerWeight>21300</TrailerWeight>
   </Truck>
   <Semitrailer>
-	  <Type>Awning</Type>
+	  <Type>2</Type>
       <Weight>21000</Weight>
 	  <Value>1500</Value>
   </Semitrailer>
   <Semitrailer>
-	  <Type>Refrigerator</Type>
+	  <Type>3</Type>
       <Weight>17890</Weight>
 	  <Value>2000</Value>
   </Semitrailer>

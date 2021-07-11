@@ -8,13 +8,9 @@ namespace CargoTransportation.Cargo.Products
 {
     public class Oil : Cargo
     {
-        public Oil(string name, KeyValuePair<double, double> temperature, double weight)
+        public Oil(string name, KeyValuePair<double, double> temperature, double weight) : base(name, temperature, weight)
         {
-            Type = "Топливо";
-            Name = name;
-            MinTemperature = temperature.Key;
-            MaxTemperature = temperature.Value;
-            Weight = weight;
+            Type = this.GetType().Name;
         }
     }
 }

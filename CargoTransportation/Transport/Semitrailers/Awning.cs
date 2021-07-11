@@ -10,17 +10,23 @@ namespace CargoTransportation.Trasnsport.Semitrailers
 {
     public class Awning : Semitrailer
     {
-        public Awning(double maxWeight, double value) : base(maxWeight, value) { }
-
-        public override Semitrailer Create(double weight, double value)
+        public Awning(double maxWeight, double value) : base(maxWeight, value) 
         {
-            return new Awning(weight, value);
+            specificType = new KeyValuePair<int, string>(2, this.GetType().Name);
+        }
+
+        public override Semitrailer Create(double weight, double value, int key)
+        {
+            if (key == specificType.Key)
+                return new Awning(weight, value);
+            else
+                return null;
         }
 
         public override void LoaddSemiTrailer(Cargo.Cargo obj)
         {
 
-            if (CurrentWeight + obj.Weight < MaxWeight && obj.Weight > 0)
+            if (CurrentWeight + obj.Weight < this.GetWeight() && obj.Weight > 0)
             {
                 if (CurrentProducts == null)
                 {
@@ -32,7 +38,7 @@ namespace CargoTransportation.Trasnsport.Semitrailers
                 }
                 else
                 {
-                    if (CurrentProducts.GetType().ToString() == obj.GetType().ToString())
+                    if (CurrentProducts.GetType().Name.ToString() == obj.GetType().Name.ToString())
                     {
                         CurrentWeight += obj.Weight;
                         CurrentProducts.Add(obj);

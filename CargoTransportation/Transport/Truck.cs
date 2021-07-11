@@ -10,15 +10,15 @@ namespace CargoTransportation.Transport
 {
     public abstract class Truck
     {
+        protected KeyValuePair<int, string> specificType { get; set; }
         public Truck(double weight)
         {
             PermissibleWeight = weight;
-            ValueConsumption = 0.1;
             ConnectedSemitrailer = null;
         }
         public double FuelConsumption { get; private set; }
         public double ValueConsumption { get; set; }
-        public static double PermissibleWeight { get; set; }
+        private double PermissibleWeight { get; set; }
 
         public void AddSemitrailer(Semitrailer semitrailer)
         {
@@ -35,10 +35,19 @@ namespace CargoTransportation.Transport
 
         public void CalculateFuelConsumption()
         {
-            // ? \\
-            FuelConsumption = ValueConsumption / Constats.DistanceTraveled * Constats.Kilometers;
+            // How to count it ? \\
+            FuelConsumption = ValueConsumption / Constants.Constants.DistanceTraveled * Constants.Constants.Kilometers;
         }
 
-        public abstract Truck Create(double weight);
+        public abstract Truck Create(double weight, int type);
+
+        public virtual KeyValuePair<int, string> GetModel()
+        {
+            return specificType;
+        }
+        public double GetWeight()
+        {
+            return PermissibleWeight;
+        }
     }
 }

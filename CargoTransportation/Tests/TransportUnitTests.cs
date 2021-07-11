@@ -10,25 +10,28 @@ namespace CargoTransportation.Tests
     [TestClass]
     public class TransportUnitTests
     {
-        public static List<Transport.Truck> Trucks;
-        public static List<Transport.Semitrailer> Semitrailers;
+
+        public static void Filling()
+        {
+            Transports.trucks = new List<Transport.Truck>();
+            Transports.semitrailers = new List<Transport.Semitrailer>();
+
+            Transports.trucks.Add(new FirstTruck(26000));
+            Transports.trucks.Add(new SecondTruck(30000));
+            Transports.trucks.Add(new ThirdTruck(21300));
+
+            Transports.semitrailers.Add(new Tanker(15000, 1000));
+            Transports.semitrailers.Add(new Awning(21000, 1500));
+            Transports.semitrailers.Add(new Refrigerator(17890, 2000));
+        }
 
         [TestMethod]
         public void AllTransport_TestMethod()
         {
-            Trucks = new List<Transport.Truck>();
-            Semitrailers = new List<Transport.Semitrailer>();
-
-            Trucks.Add(new FirstTruck(26000));
-            Trucks.Add(new SecondTruck(30000));
-            Trucks.Add(new ThirdTruck(21300));
-
-            Semitrailers.Add(new Tanker(15000));
-            Semitrailers.Add(new Awning(21000));
-            Semitrailers.Add(new Refrigerator(17890));
+            Filling();
 
 
-            //Assert
+            Assert.IsTrue(true);
         }
     }
 }
