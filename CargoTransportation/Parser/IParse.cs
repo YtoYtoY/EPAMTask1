@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CargoTransportation.DataWork
+namespace CargoTransportation.Parser
 {
-    public interface IDataFactory
+    public interface IParse
     {
         void DataRead(string path);
-
         void DataWrite(string path);
+
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CargoTransportation.Cargo.Products
 {
-    public class Oil : Cargo
+    public class Chemistry : Cargo
     {
-        public Oil(string name, KeyValuePair<double, double> temperature, double weight)
+        public Chemistry(string name, KeyValuePair<double, double> temperature, double weight)
         {
-            Type = "Топливо";
+            Type = "Химия";
             Name = name;
             MinTemperature = temperature.Key;
             MaxTemperature = temperature.Value;

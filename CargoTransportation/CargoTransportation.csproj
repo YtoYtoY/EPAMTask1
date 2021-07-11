@@ -51,19 +51,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cargo\Cargo.cs" />
+    <Compile Include="Cargo\Products\Chemistry.cs" />
     <Compile Include="Cargo\Products\Food.cs" />
     <Compile Include="Cargo\Products\Oil.cs" />
+    <Compile Include="Constants\Constats.cs" />
     <Compile Include="Constants\Exceptions.cs" />
-    <Compile Include="DataWork\IDataFactory.cs" />
-    <Compile Include="DataWork\StreamFactory.cs" />
-    <Compile Include="DataWork\XmlFactory.cs" />
+    <Compile Include="Parser\IParse.cs" />
+    <Compile Include="Parser\StreamFactory.cs" />
+    <Compile Include="Parser\XmlFactory.cs" />
+    <Compile Include="Tests\NewSemitrailerTest.cs" />
+    <Compile Include="Tests\TransportUnitTests.cs" />
+    <Compile Include="Tests\ParserUnitTests.cs" />
     <Compile Include="Trasnsport\Semitrailer.cs" />
     <Compile Include="Trasnsport\Semitrailers\Awning.cs" />
     <Compile Include="Trasnsport\Semitrailers\Refrigerator.cs" />
     <Compile Include="Trasnsport\Semitrailers\Tanker.cs" />
+    <Compile Include="Trasnsport\Transports.cs" />
     <Compile Include="Trasnsport\Truck.cs" />
-    <Compile Include="Enum\SemitrailerTypes.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Trasnsport\Trucks\FirstTruck.cs" />
+    <Compile Include="Trasnsport\Trucks\SecondTruck.cs" />
+    <Compile Include="Trasnsport\Trucks\ThirdTruck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

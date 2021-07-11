@@ -8,8 +8,10 @@ namespace CargoTransportation.Cargo
 {
     public abstract class Cargo
     {
-        public string Name { get; private set; }
-        public double Temperature { get; private set; }
-
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public double MinTemperature { get; set; }
+        public double MaxTemperature { get; set; }
+        public double Weight { get; set; }
     }
 }

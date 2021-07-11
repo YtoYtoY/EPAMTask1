@@ -1,24 +1,30 @@
 ﻿<?xml version="1.0"?>
 <CarPark>
   <Truck>
+	  <Model>1</Model>
       <TrailerWeight>26000</TrailerWeight>
   </Truck>
   <Semitrailer>
-      <Type>1</Type>
+      <Type>Tanker</Type>
       <Weight>15000</Weight>
+	  <Value>1000</Value>
   </Semitrailer>
   <Truck>
+	  <Model>2</Model>
       <TrailerWeight>30000</TrailerWeight>
   </Truck>
   <Truck>
+	  <Model>3</Model>
       <TrailerWeight>21300</TrailerWeight>
   </Truck>
   <Semitrailer>
-	  <Type>2</Type>
+	  <Type>Awning</Type>
       <Weight>21000</Weight>
+	  <Value>1500</Value>
   </Semitrailer>
   <Semitrailer>
-	  <Type>3</Type>
+	  <Type>Refrigerator</Type>
       <Weight>17890</Weight>
+	  <Value>2000</Value>
   </Semitrailer>
 </CarPark>

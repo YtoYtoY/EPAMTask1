@@ -10,32 +10,34 @@ namespace CargoTransportation.Trasnsport.Semitrailers
 {
     public class Tanker : Semitrailer
     {
-        public Tanker(double maxWeight, Cargo.Cargo type)
+        public Tanker(double maxWeight, double value) : base(maxWeight, value) { }
+
+        public override Semitrailer Create(double weight, double value)
         {
-            MaxWeight = maxWeight;
-            CurrentProduct = type;
-            CurrentWeight = 0;
+            return new Tanker(weight, value);
         }
 
-        public override void LoaddSemiTrailer(double weight, Cargo.Cargo obj)
+        public override void LoaddSemiTrailer(Cargo.Cargo obj)
         {
 
-            if (CurrentWeight + weight < MaxWeight && weight > 0)
+            if (CurrentWeight + obj.Weight < MaxWeight && obj.Weight > 0)
             {
-                if(CurrentProduct == null)
+                if(CurrentProducts == null)
                 {
-                    CurrentWeight += weight;
-                    CurrentProduct = obj;
+                    CurrentWeight += obj.Weight;
+                    CurrentProducts = new List<Cargo.Cargo>
+                    {
+                        obj
+                    };
                 }
                 else
                 {
-                    if (CurrentProduct.Name == obj.Name)
+                    if (CurrentProducts[0].Name == obj.Name)
                     {
-                        CurrentWeight += weight;
-                        CurrentProduct = obj;
+                        CurrentWeight += obj.Weight;
                     }
                     else
-                        throw new Exception(Exceptions.CargoTypeSemitrailerException);
+                        throw new Exception(Exceptions.CargoNameSemitrailerException);
                 }
             }
             else
@@ -43,9 +45,21 @@ namespace CargoTransportation.Trasnsport.Semitrailers
 
         }
 
-        public override void UnloadSemitrailer(double weight, Cargo.Cargo obj)
+        public override void UnloadSemitrailer(Cargo.Cargo obj)
         {
-            throw new NotImplementedException();
+            if (CurrentWeight - obj.Weight > 0 && obj.Weight > 0)
+            {
+                if (CurrentProducts != null && CurrentProducts[0].Name == obj.Name && CurrentProducts[0].Type == obj.Type)
+                {
+                    CurrentWeight -= obj.Weight;
+                    if (CurrentWeight == obj.Weight)
+                        CurrentProducts = null;
+                }
+                else
+                    throw new Exception(Exceptions.CargoNameSemitrailerException);
+            }
+            else
+                throw new Exception(Exceptions.WeightSemitrailerException);
         }
     }
 }
