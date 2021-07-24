@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf - 8"?>
+<CarPark>
+	<Truck>
+		<TrailerWeight>26000</TrailerWeight>
+	</Truck>
+	<Truck>
+		<TrailerWeight>30000</TrailerWeight>
+	</Truck>
+	<Truck>
+		<TrailerWeight>21300</TrailerWeight>
+	</Truck>
+	<Semitrailer>
+		<Type>1</Type>
+		<Weight>15000</Weight>
+		<Value>1000</Value>
+	</Semitrailer>
+	<Semitrailer>
+		<Type>2</Type>
+		<Weight>21000</Weight>
+		<Value>1500</Value>
+	</Semitrailer>
+	<Semitrailer>
+		<Type>3</Type>
+		<Weight>17890</Weight>
+		<Value>2000</Value>
+	</Semitrailer>
+</CarPark>
