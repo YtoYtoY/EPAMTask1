@@ -1,42 +1,35 @@
-﻿using CargoTransportation.Tests;
-using CargoTransportation.Transport;
-using CargoTransportation.Trasnsport.Semitrailers;
-using CargoTransportation.Trasnsport.Trucks;
+﻿using CargoTransportation.Transport;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace CargoTransportation.Trasnsport
 {
+
+    /// <summary>
+    /// Автопарк
+    /// </summary>
     public static class Transports
     {
         public static List<Truck> trucks;
         public static List<Semitrailer> semitrailers;
 
 
+        public static IEnumerable<Type> trucksTypes;
+        public static IEnumerable<Type> trailersTypes;
 
 
-
-
-        public static List<Type> trucksTypes = new List<Type>()
+        public static void GenerateTruckTypes()
         {
-            typeof(FirstTruck),
-            typeof(SecondTruck),
-            typeof(ThirdTruck)
-        };
-
-
-
-
-
-        public static List<Type> trailersTypes = new List<Type>()
+            Type ourtype = typeof(Truck);
+            trucksTypes = Assembly.GetAssembly(ourtype).GetTypes().Where(type => type.IsSubclassOf(ourtype));
+        }
+        public static void GenerateSemitrailerTypes()
         {
-            typeof(Tanker),
-            typeof(Awning),
-            typeof(Refrigerator),
-            typeof(NewSemitrailerTest) // :(
-        };
+            Type ourtype = typeof(Semitrailer);
+            trailersTypes = Assembly.GetAssembly(ourtype).GetTypes().Where(type => type.IsSubclassOf(ourtype));
+
+        }
     }
 }

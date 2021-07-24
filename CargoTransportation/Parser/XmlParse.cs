@@ -1,22 +1,28 @@
 ﻿using CargoTransportation.Transport;
 using CargoTransportation.Trasnsport;
-using CargoTransportation.Trasnsport.Trucks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace CargoTransportation.Parser
 {
-    class XmlFactory : IParse
+    class XmlParse : IParse
     {
+
+        /// <summary>
+        /// Метод чтения данных в котором используется объект класса XmlReader
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
         public void DataRead(string path)
         {
             Transports.trucks = new List<Truck>();
             Transports.semitrailers = new List<Semitrailer>();
 
+            Transports.GenerateSemitrailerTypes();
+            Transports.GenerateTruckTypes();
+
+            //Чтение из Xml файла седельных тягачей
             using (var reader = XmlReader.Create(path))
             {
                 reader.ReadToFollowing("Truck");
@@ -30,12 +36,14 @@ namespace CargoTransportation.Parser
                     var weight = Convert.ToDouble(reader.ReadElementContentAsString());
 
                     //**********************************
-                    var typeOfTruck = Transports.trucksTypes[model - 1];
+                    var typeOfTruck = Transports.trucksTypes.ToList()[model - 1];
                     var tmp = Activator.CreateInstance(typeOfTruck, weight) as Truck;
                     Transports.trucks.Add(tmp);
 
                 } while (reader.ReadToFollowing("Truck"));
             }
+
+            //Чтение из Xml файла полуприцепов
             using (var reader = XmlReader.Create(path))
             { 
 
@@ -53,7 +61,7 @@ namespace CargoTransportation.Parser
                     var value = Convert.ToDouble(reader.ReadElementContentAsString());
 
                     //**********************************
-                    var typeOfTrailer = Transports.trailersTypes[type - 1];
+                    var typeOfTrailer = Transports.trailersTypes.ToList()[type - 1];
                     var tmp = Activator.CreateInstance(typeOfTrailer, weight, value) as Semitrailer;
                     Transports.semitrailers.Add(tmp);
 
@@ -61,8 +69,13 @@ namespace CargoTransportation.Parser
             }
         }
 
+        /// <summary>
+        /// Метод записи данных в Xml файл с использованием объекта класса XmlWriter
+        /// </summary>
+        /// <param name="path">Путь к файлу</param>
         public void DataWrite(string path)
         {
+            // XmlWriterSettings нужен для автоматической вставки отступов и переходов на новую строку
             XmlWriterSettings xmlWriterSettings = new XmlWriterSettings()
             {
                 Indent = true,
@@ -70,6 +83,7 @@ namespace CargoTransportation.Parser
                 NewLineOnAttributes = true
             };
 
+            // Запись данных в файл
             using (XmlWriter writer = XmlWriter.Create(path, xmlWriterSettings))
             {
                 writer.WriteStartDocument();

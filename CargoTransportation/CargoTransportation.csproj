@@ -57,8 +57,8 @@
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="Constants\Exceptions.cs" />
     <Compile Include="Parser\IParse.cs" />
-    <Compile Include="Parser\StreamFactory.cs" />
-    <Compile Include="Parser\XmlFactory.cs" />
+    <Compile Include="Parser\StreamParse.cs" />
+    <Compile Include="Parser\XmlParse.cs" />
     <Compile Include="Tests\NewCargoTest.cs" />
     <Compile Include="Tests\NewSemitrailerTest.cs" />
     <Compile Include="Tests\TransportUnitTests.cs" />

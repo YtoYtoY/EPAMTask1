@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CargoTransportation.Constants
+﻿namespace CargoTransportation.Constants
 {
-    // TODO: Добавить новые исключения
     public static class Exceptions
     {
         public const string WeightSemitrailerException = "Error weight value. Perhaps the mass was more than the permissible value!";
@@ -20,5 +13,7 @@ namespace CargoTransportation.Constants
         public const string FileSemitrailerException = "Semitrailer error in file. The data may be incorrect in the file!";
 
         public const string NewTestProductException = "Error. The current object is invalid for this transport type!";
+
+        public const string DifferentWeightException = "Semitrailer load capacity greater than the maximum capacity of the truck!";
     }
 }

@@ -2,9 +2,6 @@
 using CargoTransportation.Transport;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CargoTransportation.Trasnsport.Semitrailers
 {
@@ -15,13 +12,6 @@ namespace CargoTransportation.Trasnsport.Semitrailers
             specificType = new KeyValuePair<int, string>(3, this.GetType().Name);
         }
 
-        public override Semitrailer Create(double weight, double value, int key)
-        {
-            if (key == specificType.Key)
-                return new Refrigerator(weight, value);
-            else
-                return null;
-        }
 
         public override void LoaddSemiTrailer(Cargo.Cargo obj)
         {

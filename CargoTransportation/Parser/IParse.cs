@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CargoTransportation.Parser
+﻿namespace CargoTransportation.Parser
 {
+    /// <summary>
+    /// Интерфейс реализующий чтение и запись данных
+    /// </summary>
     public interface IParse
     {
         void DataRead(string path);
         void DataWrite(string path);
-
     }
 }

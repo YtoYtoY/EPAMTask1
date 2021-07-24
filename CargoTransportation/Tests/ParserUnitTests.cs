@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CargoTransportation.Parser;
 using CargoTransportation.Transport;
 using CargoTransportation.Trasnsport;
-using CargoTransportation.Trasnsport.Semitrailers;
-using CargoTransportation.Trasnsport.Trucks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CargoTransportation.Tests
 {
+
+    /// <summary>
+    /// Класс для тестирования считывания и сохранения xml файла
+    /// </summary>
     [TestClass]
     public class ParserUnitTests
     {
@@ -16,13 +17,13 @@ namespace CargoTransportation.Tests
         [TestMethod]
         public void XmlReader_TestMethod()
         {
-            XmlFactory parser = new XmlFactory();
+            XmlParse parser = new XmlParse();
             parser.DataRead(Constants.Constants.StreamReaderFilePath);
 
             List<Truck> expectedTrucks = Transports.trucks;
             List<Semitrailer> expectedTrailers = Transports.semitrailers;
 
-            TransportUnitTests.Filling();
+            TransportUnitTests.FillingTransport();
             List<Truck> actualdTrucks = Transports.trucks;
             List<Semitrailer> actualdTrailer = Transports.semitrailers;
 
@@ -33,8 +34,8 @@ namespace CargoTransportation.Tests
         [TestMethod]
         public void XmlWriter_TestMethod()
         {
-            TransportUnitTests.Filling();
-            XmlFactory parser = new XmlFactory();
+            TransportUnitTests.FillingTransport();
+            XmlParse parser = new XmlParse();
             parser.DataWrite(Constants.Constants.XmlWriterFilePath);
 
             Transports.trucks = null;
@@ -44,13 +45,13 @@ namespace CargoTransportation.Tests
         [TestMethod]
         public void StreamReader_TestMethod()
         {
-            StreamFactory parser = new StreamFactory();
+            StreamParse parser = new StreamParse();
             parser.DataRead(Constants.Constants.StreamReaderFilePath);
 
             List<Truck> expectedTrucks = Transports.trucks;
             List<Semitrailer> expectedTrailers = Transports.semitrailers;
 
-            TransportUnitTests.Filling();
+            TransportUnitTests.FillingTransport();
             List<Truck> actualdTrucks = Transports.trucks;
             List<Semitrailer> actualdTrailer = Transports.semitrailers;
 
@@ -61,8 +62,8 @@ namespace CargoTransportation.Tests
         [TestMethod]
         public void StreamWriter_TestMethod()
         {
-            TransportUnitTests.Filling();
-            StreamFactory parser = new StreamFactory();
+            TransportUnitTests.FillingTransport();
+            StreamParse parser = new StreamParse();
             parser.DataWrite(Constants.Constants.StreamWriterFilePath);
 
             Transports.trucks = null;

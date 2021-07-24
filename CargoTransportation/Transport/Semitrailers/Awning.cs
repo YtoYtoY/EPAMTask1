@@ -2,9 +2,6 @@
 using CargoTransportation.Transport;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CargoTransportation.Trasnsport.Semitrailers
 {
@@ -15,13 +12,6 @@ namespace CargoTransportation.Trasnsport.Semitrailers
             specificType = new KeyValuePair<int, string>(2, this.GetType().Name);
         }
 
-        public override Semitrailer Create(double weight, double value, int key)
-        {
-            if (key == specificType.Key)
-                return new Awning(weight, value);
-            else
-                return null;
-        }
 
         public override void LoaddSemiTrailer(Cargo.Cargo obj)
         {
@@ -38,7 +28,7 @@ namespace CargoTransportation.Trasnsport.Semitrailers
                 }
                 else
                 {
-                    if (CurrentProducts.GetType().Name.ToString() == obj.GetType().Name.ToString())
+                    if (CurrentProducts[CurrentProducts.Count - 1].GetType().ToString() == obj.GetType().ToString())
                     {
                         CurrentWeight += obj.Weight;
                         CurrentProducts.Add(obj);

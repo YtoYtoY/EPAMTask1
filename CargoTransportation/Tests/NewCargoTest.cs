@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CargoTransportation.Tests
 {
 
     /// <summary>
-    /// Класс для тестирования описывающий масштаб объектов
+    /// Новый грузовой объект
     /// </summary>
     public class NewCargoTest : Cargo.Cargo 
     {
-        public  bool Dimensions { get; set; }
+        public bool Dimensions { get; set; }
         public NewCargoTest(string name, KeyValuePair<double, double> temperature, double weight, bool dimensions) : base(name, temperature, weight)
         {
             Type = this.GetType().Name;
             Dimensions = dimensions;
+        }
+
+        public override object GetInfo()
+        {
+            return Dimensions;
         }
     }
 }

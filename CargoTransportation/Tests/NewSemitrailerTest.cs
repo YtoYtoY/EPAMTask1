@@ -2,12 +2,10 @@
 using CargoTransportation.Transport;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CargoTransportation.Tests
 {
+
     /// <summary>
     /// Класс для тестирования описывающий полу-прицеп - контейнеровоз
     /// </summary>
@@ -18,14 +16,7 @@ namespace CargoTransportation.Tests
             specificType = new KeyValuePair<int, string>(4, "Container");
         }
 
-        public override Semitrailer Create(double weight, double value, int key)
-        {
-            if (key == specificType.Key)
-                return new NewSemitrailerTest(weight, value);
-            else
-                return null;
-        }
-
+        // Условие - перевозить можно только все хрупкие или все крепкие объекты
         public override void LoaddSemiTrailer(Cargo.Cargo obj)
         {
             if (CurrentWeight + obj.Weight < this.GetWeight() && obj.Weight > 0)
@@ -42,7 +33,9 @@ namespace CargoTransportation.Tests
                     }
                     else
                     {
-                        if (CurrentProducts[CurrentProducts.Count - 1].) == obj.)
+                        var t1 = CurrentProducts[CurrentProducts.Count - 1].GetInfo();
+                        var t2 = obj.GetInfo();
+                        if (t2 != null && (bool)t1 == (bool)t2)
                         {
                             CurrentWeight += obj.Weight;
                             CurrentProducts.Add(obj);
