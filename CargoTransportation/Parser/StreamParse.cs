@@ -98,6 +98,7 @@ namespace CargoTransportation.Parser
                 for (int i = 0; i < Transports.semitrailers.Count; i++)
                 {
                     writer.Write(CreateElement(1, "Truck"));
+                    writer.Write(CreateValueElement(2, "Model", Transports.trucks[i].GetModel().Key.ToString()));
                     writer.Write(CreateValueElement(2, "TrailerWeight", Transports.trucks[i].GetWeight().ToString()));
                     writer.Write(CloseElement(1, "Truck"));
                 }
