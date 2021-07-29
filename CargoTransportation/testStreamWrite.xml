@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf - 8"?>
 <CarPark>
 	<Truck>
+		<Model>1</Model>
 		<TrailerWeight>26000</TrailerWeight>
 	</Truck>
 	<Truck>
+		<Model>2</Model>
 		<TrailerWeight>30000</TrailerWeight>
 	</Truck>
 	<Truck>
+		<Model>3</Model>
 		<TrailerWeight>21300</TrailerWeight>
 	</Truck>
 	<Semitrailer>
@@ -25,3 +28,4 @@
 		<Value>2000</Value>
 	</Semitrailer>
 </CarPark>
+ 
