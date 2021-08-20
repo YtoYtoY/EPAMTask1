@@ -1,0 +1,94 @@
+[13.06.21 17.40.52] -- Data logging started 
+[17.40.52] -- ***** Testing the start of the game *****
+[17.40.52] -- Board added
+[17.40.52] -- New Black chess player: 1
+[17.40.52] -- New White chess player: 2
+[17.40.52] -- Created Black figure - Rook
+[17.40.52] -- Added "Rook" piece to square [8;a]
+[17.40.52] -- Created Black figure - Knight
+[17.40.52] -- Added "Knight" piece to square [8;b]
+[17.40.52] -- Created Black figure - Bishop
+[17.40.52] -- Added "Bishop" piece to square [8;c]
+[17.40.52] -- Created Black figure - Queen
+[17.40.52] -- Added "Queen" piece to square [8;d]
+[17.40.52] -- Created Black figure - King
+[17.40.52] -- Added "King" piece to square [8;e]
+[17.40.52] -- Created Black figure - Bishop
+[17.40.52] -- Added "Bishop" piece to square [8;f]
+[17.40.52] -- Created Black figure - Knight
+[17.40.52] -- Added "Knight" piece to square [8;g]
+[17.40.52] -- Created Black figure - Rook
+[17.40.52] -- Added "Rook" piece to square [8;h]
+[17.40.52] -- Army added
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [7;a]
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [7;b]
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [7;c]
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [7;d]
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [7;e]
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [7;f]
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [7;g]
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [7;h]
+[17.40.52] -- Pawns added
+[17.40.52] -- Created White figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [2;a]
+[17.40.52] -- Created White figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [2;b]
+[17.40.52] -- Created White figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [2;c]
+[17.40.52] -- Created White figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [2;d]
+[17.40.52] -- Created White figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [2;e]
+[17.40.52] -- Created White figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [2;f]
+[17.40.52] -- Created White figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [2;g]
+[17.40.52] -- Created White figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [2;h]
+[17.40.52] -- Pawns added
+[17.40.52] -- Created White figure - Rook
+[17.40.52] -- Added "Rook" piece to square [1;a]
+[17.40.52] -- Created White figure - Knight
+[17.40.52] -- Added "Knight" piece to square [1;b]
+[17.40.52] -- Created White figure - Bishop
+[17.40.52] -- Added "Bishop" piece to square [1;c]
+[17.40.52] -- Created White figure - Queen
+[17.40.52] -- Added "Queen" piece to square [1;d]
+[17.40.52] -- Created White figure - King
+[17.40.52] -- Added "King" piece to square [1;e]
+[17.40.52] -- Created White figure - Bishop
+[17.40.52] -- Added "Bishop" piece to square [1;f]
+[17.40.52] -- Created White figure - Knight
+[17.40.52] -- Added "Knight" piece to square [1;g]
+[17.40.52] -- Created White figure - Rook
+[17.40.52] -- Added "Rook" piece to square [1;h]
+[17.40.52] -- Army added
+[17.40.52] -- Game created
+[17.40.52] -- ***** Testing adding a figure *****
+[17.40.52] -- New Black chess player: FigureOnBoard_UnitTest
+[17.40.52] -- Board added
+[17.40.52] -- Created Black figure - Pawn
+[17.40.52] -- Added "Pawn" piece to square [8;a]
+[17.40.52] -- Get figure at position [8;a]
+[17.40.52] -- ***** Testing removing a figure *****
+[17.40.52] -- New Black chess player: FigureRemoveFromBoard_UnitTest
+[17.40.52] -- Board added
+[17.40.52] -- Created Black figure - King
+[17.40.52] -- Added "King" piece to square [8;b]
+[17.40.52] -- Get figure at position [8;b]
+[17.40.52] -- Removed "King" piece from square [8;b]
+[17.40.52] -- Get figure at position [8;b]
+[17.40.52] -- Test1
+[17.40.52] -- Test2
+[17.40.52] -- Test3
+[17.40.52] -- Test4
+[17.40.52] -- Test5
+[17.40.52] -- Test6

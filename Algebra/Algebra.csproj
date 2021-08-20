@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -51,16 +54,17 @@
   <ItemGroup>
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\Exceptions.cs" />
+    <Compile Include="Interfaces\Transfer.cs" />
     <Compile Include="SLAE\GaussMethod.cs" />
     <Compile Include="SLAE\LUDecomposition.cs" />
     <Compile Include="SLAE\SolveMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Methods_UnitTest.cs" />
     <Compile Include="Tests\Solve_UnitTest.cs" />
+    <Compile Include="Tests\Transfer_UnitTest.cs" />
     <Compile Include="Transfer\HttpTransfer.cs" />
     <Compile Include="Transfer\ReadingTemplate.cs" />
-    <Compile Include="Transfer\Transfer.cs" />
-    <Compile Include="Transfer\TspIpTransfer.cs" />
+    <Compile Include="Transfer\TcpIpTransfer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -73,7 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

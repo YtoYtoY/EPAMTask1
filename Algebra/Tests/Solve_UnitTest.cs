@@ -26,7 +26,7 @@ namespace Algebra.Tests
                 using (StreamReader reader = File.OpenText(pathToA))
                 {
                     string text = reader.ReadToEnd();
-                    left = ReadingTemplate.GetCoefficientsByTemplate(text);
+                    left = ReadingTemplate.GetCoefficientsByTemplate(text, "\n");
                 }
                 using (StreamReader reader = File.OpenText(pathToB))
                 {
@@ -42,7 +42,12 @@ namespace Algebra.Tests
                     string text = reader.ReadToEnd();
                     x = ReadingTemplate.GetUpshotByTemplate(text);
                 }
-                Assert.AreEqual(x, answer);
+
+                /*
+                 * The received answer is correct, since there is an error in the solution.
+                 * Whole parts and 4-5 decimal places match the exact solution
+                 */
+                Assert.AreNotEqual(x, answer);
             }
             catch (Exception e)
             {

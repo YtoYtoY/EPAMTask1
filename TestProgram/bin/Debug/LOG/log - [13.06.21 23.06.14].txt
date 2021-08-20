@@ -1,0 +1,178 @@
+[13.06.21 23.06.14] -- Data logging started 
+[23.06.14] -- ***** Testing wrong move bishops *****
+[23.06.14] -- Board added
+[23.06.14] -- Board added
+[23.06.14] -- New Black chess player: 1
+[23.06.14] -- New White chess player: 2
+[23.06.14] -- Created White figure - Bishop
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Bishop" piece to square [1;c]
+[23.06.14] -- Added "Pawn" piece to square [8;f]
+[23.06.14] -- Get figure at position [1;c] - White; Bishop
+[23.06.14] -- Figure can move only diagonally!
+[23.06.14] -- Figure can move only diagonally!
+[23.06.14] -- Get figure at position [1;c] - White; Bishop
+[23.06.14] -- Get figure at position [8;f] - Black; Pawn
+[23.06.14] -- ***** Testing correct move bishops *****
+[23.06.14] -- Board added
+[23.06.14] -- Board added
+[23.06.14] -- New Black chess player: 1
+[23.06.14] -- New White chess player: 2
+[23.06.14] -- Created White figure - Bishop
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Bishop" piece to square [1;c]
+[23.06.14] -- Added "Pawn" piece to square [8;f]
+[23.06.14] -- Get figure at position [1;c] - White; Bishop
+[23.06.14] -- Figure "Bishop" moved from square [1;c] to square [6;h]
+[23.06.14] -- Get figure at position [6;h] - White; Bishop
+[23.06.14] -- Figure "Bishop" moved from square [6;h] to square [8;f]
+[23.06.14] -- Get figure at position [8;f] - White; Bishop
+[23.06.14] -- ***** Testing wrong move queen *****
+[23.06.14] -- Board added
+[23.06.14] -- Board added
+[23.06.14] -- New Black chess player: 1
+[23.06.14] -- New White chess player: 2
+[23.06.14] -- Created White figure - Queen
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Queen" piece to square [1;c]
+[23.06.14] -- Added "Pawn" piece to square [8;f]
+[23.06.14] -- Get figure at position [1;c] - White; Queen
+[23.06.14] -- Figure can move only diagonally!
+[23.06.14] -- {0}s can move horizontally or vertically!
+[23.06.14] -- {0}s can move horizontally or vertically!
+[23.06.14] -- Get figure at position [1;c] - White; Queen
+[23.06.14] -- Get figure at position [8;f] - Black; Pawn
+[23.06.14] -- ***** Testing correct move queen *****
+[23.06.14] -- Board added
+[23.06.14] -- Board added
+[23.06.14] -- New Black chess player: 1
+[23.06.14] -- New White chess player: 2
+[23.06.14] -- Created White figure - Queen
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Queen" piece to square [1;c]
+[23.06.14] -- Added "Pawn" piece to square [8;f]
+[23.06.14] -- Get figure at position [1;c] - White; Queen
+[23.06.14] -- Figure "Queen" moved from square [1;c] to square [4;f]
+[23.06.14] -- Get figure at position [4;f] - White; Queen
+[23.06.14] -- Figure can move only diagonally!
+[23.06.14] -- Figure "Queen" moved from square [4;f] to square [8;f]
+[23.06.14] -- Get figure at position [8;f] - White; Queen
+[23.06.14] -- ***** Testing wrong move rook *****
+[23.06.14] -- Board added
+[23.06.14] -- Board added
+[23.06.14] -- New Black chess player: 1
+[23.06.14] -- New White chess player: 2
+[23.06.14] -- Created White figure - Rook
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Rook" piece to square [1;c]
+[23.06.14] -- Added "Pawn" piece to square [8;f]
+[23.06.14] -- Get figure at position [1;c] - White; Rook
+[23.06.14] -- {0}s can move horizontally or vertically!
+[23.06.14] -- {0}s can move horizontally or vertically!
+[23.06.14] -- Get figure at position [1;c] - White; Rook
+[23.06.14] -- ***** Testing correct move rook *****
+[23.06.14] -- Board added
+[23.06.14] -- Board added
+[23.06.14] -- New Black chess player: 1
+[23.06.14] -- New White chess player: 2
+[23.06.14] -- Created White figure - Rook
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Rook" piece to square [1;c]
+[23.06.14] -- Added "Pawn" piece to square [8;f]
+[23.06.14] -- Get figure at position [1;c] - White; Rook
+[23.06.14] -- Figure "Rook" moved from square [1;c] to square [8;c]
+[23.06.14] -- Get figure at position [8;c] - White; Rook
+[23.06.14] -- Figure "Rook" moved from square [8;c] to square [8;f]
+[23.06.14] -- Get figure at position [8;f] - White; Rook
+[23.06.14] -- ***** Testing the start of the game *****
+[23.06.14] -- Board added
+[23.06.14] -- New Black chess player: 1
+[23.06.14] -- New White chess player: 2
+[23.06.14] -- Created Black figure - Rook
+[23.06.14] -- Added "Rook" piece to square [8;a]
+[23.06.14] -- Created Black figure - Knight
+[23.06.14] -- Added "Knight" piece to square [8;b]
+[23.06.14] -- Created Black figure - Bishop
+[23.06.14] -- Added "Bishop" piece to square [8;c]
+[23.06.14] -- Created Black figure - Queen
+[23.06.14] -- Added "Queen" piece to square [8;d]
+[23.06.14] -- Created Black figure - King
+[23.06.14] -- Added "King" piece to square [8;e]
+[23.06.14] -- Created Black figure - Bishop
+[23.06.14] -- Added "Bishop" piece to square [8;f]
+[23.06.14] -- Created Black figure - Knight
+[23.06.14] -- Added "Knight" piece to square [8;g]
+[23.06.14] -- Created Black figure - Rook
+[23.06.14] -- Added "Rook" piece to square [8;h]
+[23.06.14] -- Army added
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [7;a]
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [7;b]
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [7;c]
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [7;d]
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [7;e]
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [7;f]
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [7;g]
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [7;h]
+[23.06.14] -- Pawns added
+[23.06.14] -- Created White figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [2;a]
+[23.06.14] -- Created White figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [2;b]
+[23.06.14] -- Created White figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [2;c]
+[23.06.14] -- Created White figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [2;d]
+[23.06.14] -- Created White figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [2;e]
+[23.06.14] -- Created White figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [2;f]
+[23.06.14] -- Created White figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [2;g]
+[23.06.14] -- Created White figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [2;h]
+[23.06.14] -- Pawns added
+[23.06.14] -- Created White figure - Rook
+[23.06.14] -- Added "Rook" piece to square [1;a]
+[23.06.14] -- Created White figure - Knight
+[23.06.14] -- Added "Knight" piece to square [1;b]
+[23.06.14] -- Created White figure - Bishop
+[23.06.14] -- Added "Bishop" piece to square [1;c]
+[23.06.14] -- Created White figure - Queen
+[23.06.14] -- Added "Queen" piece to square [1;d]
+[23.06.14] -- Created White figure - King
+[23.06.14] -- Added "King" piece to square [1;e]
+[23.06.14] -- Created White figure - Bishop
+[23.06.14] -- Added "Bishop" piece to square [1;f]
+[23.06.14] -- Created White figure - Knight
+[23.06.14] -- Added "Knight" piece to square [1;g]
+[23.06.14] -- Created White figure - Rook
+[23.06.14] -- Added "Rook" piece to square [1;h]
+[23.06.14] -- Army added
+[23.06.14] -- Game created
+[23.06.14] -- ***** Testing adding a figure *****
+[23.06.14] -- New Black chess player: FigureOnBoard_UnitTest
+[23.06.14] -- Board added
+[23.06.14] -- Created Black figure - Pawn
+[23.06.14] -- Added "Pawn" piece to square [8;a]
+[23.06.14] -- Get figure at position [8;a] - Black; Pawn
+[23.06.14] -- ***** Testing removing a figure *****
+[23.06.14] -- New Black chess player: FigureRemoveFromBoard_UnitTest
+[23.06.14] -- Board added
+[23.06.14] -- Created Black figure - King
+[23.06.14] -- Added "King" piece to square [8;b]
+[23.06.14] -- Get figure at position [8;b] - Black; King
+[23.06.14] -- Removed "King" piece from square [8;b]
+[23.06.14] -- Test1
+[23.06.14] -- Test2
+[23.06.14] -- Test3
+[23.06.14] -- Test4
+[23.06.14] -- Test5
+[23.06.14] -- Test6

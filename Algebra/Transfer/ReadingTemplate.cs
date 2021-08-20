@@ -10,11 +10,19 @@ using System.Threading.Tasks;
 
 namespace Algebra.Transfer
 {
+    /// <summary>
+    /// A class describing methods for converting received strings to numbers and numbers to text for sending
+    /// </summary>
     public static class ReadingTemplate
     {
-        public static double[][] GetCoefficientsByTemplate(string text)
+        /// <summary>
+        /// Getting a matrix of coefficients from a string
+        /// </summary>
+        /// <param name="text">File contents</param>
+        /// <returns>"Left" part</returns>
+        public static double[][] GetCoefficientsByTemplate(string text, string spliter)
         {
-            string[] manyText = text.Split('\n');
+            string[] manyText = text.Split(spliter.ToCharArray());
             double[][] result = new double[manyText.Length][];
 
             for (int i = 0; i < manyText.Length; i++)
@@ -29,6 +37,11 @@ namespace Algebra.Transfer
             return result;
         }
 
+        /// <summary>
+        /// Getting the coefficients of the right side
+        /// </summary>
+        /// <param name="text">File contents</param>
+        /// <returns>"Right" part</returns>
         public static double[] GetUpshotByTemplate(string text)
         {
             double[] result = Regex.Matches(text, Constants.readingDoublePattern)
@@ -41,6 +54,11 @@ namespace Algebra.Transfer
             return result;
         }
 
+        /// <summary>
+        /// Converting an array of responses to a string for a text file
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static string SetToString(double[] data)
         {
             string result = string.Empty;

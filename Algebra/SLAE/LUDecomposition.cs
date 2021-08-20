@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Algebra.SLAE
 {
+    /// <summary>
+    /// LU Decomposition method
+    /// </summary>
     public class LUDecomposition : SolveMethod
     {
         public LUDecomposition(double[][] leftPart, double[] rightPart)
             : base(leftPart, rightPart)
         {
-            TrySolve(leftPart, rightPart);
         }
 
         public override void TrySolve(double[][] leftPart, IReadOnlyList<double> rightPart)

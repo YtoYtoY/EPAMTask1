@@ -1,0 +1,107 @@
+[13.06.21 20.51.05] -- Data logging started 
+[20.51.05] -- ***** Testing moving bishops *****
+[20.51.05] -- Board added
+[20.51.05] -- Board added
+[20.51.05] -- New Black chess player: 1
+[20.51.05] -- New White chess player: 2
+[20.51.05] -- Created White figure - Bishop
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Bishop" piece to square [1;c]
+[20.51.05] -- Added "Pawn" piece to square [8;f]
+[20.51.05] -- Get figure at position [1;c] - White; Bishop
+[20.51.05] -- Figure can move only diagonally!
+[20.51.05] -- Figure can move only diagonally!
+[20.51.05] -- Get figure at position [1;c] - White; Bishop
+[20.51.05] -- Get figure at position [8;f] - Black; Pawn
+[20.51.05] -- ***** Testing the start of the game *****
+[20.51.05] -- Board added
+[20.51.05] -- New Black chess player: 1
+[20.51.05] -- New White chess player: 2
+[20.51.05] -- Created Black figure - Rook
+[20.51.05] -- Added "Rook" piece to square [8;a]
+[20.51.05] -- Created Black figure - Knight
+[20.51.05] -- Added "Knight" piece to square [8;b]
+[20.51.05] -- Created Black figure - Bishop
+[20.51.05] -- Added "Bishop" piece to square [8;c]
+[20.51.05] -- Created Black figure - Queen
+[20.51.05] -- Added "Queen" piece to square [8;d]
+[20.51.05] -- Created Black figure - King
+[20.51.05] -- Added "King" piece to square [8;e]
+[20.51.05] -- Created Black figure - Bishop
+[20.51.05] -- Added "Bishop" piece to square [8;f]
+[20.51.05] -- Created Black figure - Knight
+[20.51.05] -- Added "Knight" piece to square [8;g]
+[20.51.05] -- Created Black figure - Rook
+[20.51.05] -- Added "Rook" piece to square [8;h]
+[20.51.05] -- Army added
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [7;a]
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [7;b]
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [7;c]
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [7;d]
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [7;e]
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [7;f]
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [7;g]
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [7;h]
+[20.51.05] -- Pawns added
+[20.51.05] -- Created White figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [2;a]
+[20.51.05] -- Created White figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [2;b]
+[20.51.05] -- Created White figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [2;c]
+[20.51.05] -- Created White figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [2;d]
+[20.51.05] -- Created White figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [2;e]
+[20.51.05] -- Created White figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [2;f]
+[20.51.05] -- Created White figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [2;g]
+[20.51.05] -- Created White figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [2;h]
+[20.51.05] -- Pawns added
+[20.51.05] -- Created White figure - Rook
+[20.51.05] -- Added "Rook" piece to square [1;a]
+[20.51.05] -- Created White figure - Knight
+[20.51.05] -- Added "Knight" piece to square [1;b]
+[20.51.05] -- Created White figure - Bishop
+[20.51.05] -- Added "Bishop" piece to square [1;c]
+[20.51.05] -- Created White figure - Queen
+[20.51.05] -- Added "Queen" piece to square [1;d]
+[20.51.05] -- Created White figure - King
+[20.51.05] -- Added "King" piece to square [1;e]
+[20.51.05] -- Created White figure - Bishop
+[20.51.05] -- Added "Bishop" piece to square [1;f]
+[20.51.05] -- Created White figure - Knight
+[20.51.05] -- Added "Knight" piece to square [1;g]
+[20.51.05] -- Created White figure - Rook
+[20.51.05] -- Added "Rook" piece to square [1;h]
+[20.51.05] -- Army added
+[20.51.05] -- Game created
+[20.51.05] -- ***** Testing adding a figure *****
+[20.51.05] -- New Black chess player: FigureOnBoard_UnitTest
+[20.51.05] -- Board added
+[20.51.05] -- Created Black figure - Pawn
+[20.51.05] -- Added "Pawn" piece to square [8;a]
+[20.51.05] -- Get figure at position [8;a] - Black; Pawn
+[20.51.05] -- ***** Testing removing a figure *****
+[20.51.05] -- New Black chess player: FigureRemoveFromBoard_UnitTest
+[20.51.05] -- Board added
+[20.51.05] -- Created Black figure - King
+[20.51.05] -- Added "King" piece to square [8;b]
+[20.51.05] -- Get figure at position [8;b] - Black; King
+[20.51.05] -- Removed "King" piece from square [8;b]
+[20.51.05] -- Test1
+[20.51.05] -- Test2
+[20.51.05] -- Test3
+[20.51.05] -- Test4
+[20.51.05] -- Test5
+[20.51.05] -- Test6

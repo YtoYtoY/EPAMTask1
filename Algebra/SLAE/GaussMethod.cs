@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Algebra.SLAE
 {
-    public class GaussMethod : SolveMethod
+	/// <summary>
+	/// Gauss method
+	/// </summary>
+	public class GaussMethod : SolveMethod
     {
-        public GaussMethod(double[][] leftPart, double[] rightPart)
+
+		public GaussMethod(double[][] leftPart, double[] rightPart)
             : base(leftPart, rightPart)
         {
-
-            TrySolve(leftPart, rightPart);
         }
 
 		public override void TrySolve(double[][] leftPart, IReadOnlyList<double> rightPart)

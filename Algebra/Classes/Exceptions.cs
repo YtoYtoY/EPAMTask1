@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Algebra.Classes
 {
+    /// <summary>
+    /// Exceptions static class
+    /// </summary>
     public static class Exceptions
     {
+        public const string NonLinearException = "The equation did not pass the linearity test!";
     }
 }
