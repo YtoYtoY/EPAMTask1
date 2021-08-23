@@ -1,14 +1,16 @@
-First,Line,First,Line
-First,Line,First,Line
-First,Line,First,Line
-First,Line,First,Line
-Second,Line,Second,Line
-Second,Line,Second,Line
-Second,Line,Second,Line
-Second,Line,Second,Line
-**********************************
+GetTakenBooksByGenre_Query
+Fantasy, 3
+	{ Id: 1, Name: Harry Potter and the Philosophers Stone, Ganre id: 1 }
+	{ Id: 2, Name: Harry Potter and the Chamber of Secrets, Ganre id: 1 }
+	{ Id: 3, Name: Harry Potter and the Prisoner of Azkaban, Ganre id: 1 }
+Epic, 1
+	{ Id: 5, Name: War and Peace, Ganre id: 3 }
 
-Third,Line,Third,Line
-Third,Line,Third,Line
-Third,Line,Third,Line
-Third,Line,Third,Line
+GetBooksInformByTime_Query
+Москвина Амина Данииловна
+	{ Id: 2, Name: Harry Potter and the Chamber of Secrets, Ganre id: 1 }
+	{ Id: 3, Name: Harry Potter and the Prisoner of Azkaban, Ganre id: 1 }
+Колесников Артемий Сергеевич
+	{ Id: 1, Name: Harry Potter and the Philosophers Stone, Ganre id: 1 }
+Наумов Даниэль Савельевич
+	{ Id: 5, Name: War and Peace, Ganre id: 3 }

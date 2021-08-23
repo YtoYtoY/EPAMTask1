@@ -2,6 +2,9 @@
 using System.IO;
 using Library.Parser;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Library.DataBase;
+using Library.DataBase.ORM;
+using System.Collections.Generic;
 
 namespace Library.Tests
 {
@@ -10,49 +13,37 @@ namespace Library.Tests
     public class Parser_UnitTest
     {
         private static string txtTestPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../Tests/testTXT.txt");
-        private static string pdfTestPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../Tests/testPDF.txt");
-        private static string xlsxTestPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../Tests/testXLSX.txt");
+        private static string pdfTestPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../Tests/testPDF.docx");
+        private static string xlsxTestPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../Tests/testXLSX.xlsx");
 
-        public string TestQuery_1() => "First,Line,First,Line\nFirst,Line,First,Line\nFirst,Line,First,Line\nFirst,Line,First,Line\n";
-        public string TestQuery_2() => "Second,Line,Second,Line\nSecond,Line,Second,Line\nSecond,Line,Second,Line\nSecond,Line,Second,Line\n";
-        public string TestQuery_3() => "Third,Line,Third,Line\nThird,Line,Third,Line\nThird,Line,Third,Line\nThird,Line,Third,Line\n";
-        public string EmptySpace() => "**********************************\n\n";
+        private static DateTime first = new DateTime(2020, 2, 8, 0, 0, 0);
+        private static DateTime last = DateTime.Now;
 
+        ForExecutionEmpty testEmptyDelegate = new ForExecutionEmpty(Queries.GetTakenBooksByGenre_Query);
+        ForExecutionDate testDateDelegate = new ForExecutionDate(Queries.GetBooksInformByTime_Query);
 
         [TestMethod]
         public void TextFile_UnitMethod()
         {
-            ForExecution testDelegate = new ForExecution(TestQuery_1);
-            testDelegate += TestQuery_2;
-            testDelegate += EmptySpace;
-            testDelegate += TestQuery_3;
-
+            Library.GetAll();
             TEXT txt = new TEXT();
-            txt.SetToFile(txtTestPath, testDelegate);
+            txt.SetToFile(txtTestPath, testEmptyDelegate, testDateDelegate, first, last);
         }
 
         [TestMethod]
         public void ExcelFile_UnitMethod()
         {
-            ForExecution testDelegate = new ForExecution(TestQuery_1);
-            testDelegate += TestQuery_2;
-            testDelegate += EmptySpace;
-            testDelegate += TestQuery_3;
-
+            Library.GetAll();
             XLSX excel = new XLSX();
-            excel.SetToFile(xlsxTestPath, testDelegate);
+            excel.SetToFile(xlsxTestPath, testEmptyDelegate, testDateDelegate, first, last);
         }
 
         [TestMethod]
         public void PdfFile_UnitMethod()
         {
-            ForExecution testDelegate = new ForExecution(TestQuery_1);
-            testDelegate += TestQuery_2;
-            testDelegate += EmptySpace;
-            testDelegate += TestQuery_3;
-
+            Library.GetAll();
             PDF pdf = new PDF();
-            pdf.SetToFile(xlsxTestPath, testDelegate);
+            pdf.SetToFile(pdfTestPath, testEmptyDelegate, testDateDelegate, first, last);
         }
     }
 }

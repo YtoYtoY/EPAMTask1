@@ -1,0 +1,7 @@
+﻿INSERT INTO AuthorBooks (BookID, AuthorId) VALUES (1, 1)
+INSERT INTO AuthorBooks (BookID, AuthorId) VALUES (2, 1)
+INSERT INTO AuthorBooks (BookID, AuthorId) VALUES (3, 1)
+INSERT INTO AuthorBooks (BookID, AuthorId) VALUES (4, 2)
+INSERT INTO AuthorBooks (BookID, AuthorId) VALUES (5, 3)
+INSERT INTO AuthorBooks (BookID, AuthorId) VALUES (6, 4)
+INSERT INTO AuthorBooks (BookID, AuthorId) VALUES (7, 4)

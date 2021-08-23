@@ -1,80 +1,95 @@
-﻿using Library.DataBase.ORM;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using Library.DataBase.ORM;
 
 namespace Library.DataBase.CRUD
 {
-    // TODO: Реализовать CRUD с использованием ADO и рефлексии
-
-    //       Вывести информацию о самом популярном авторе, наиболее читающем абоненте,
-    //       наиболее востребованном жанре.
-
-    //       Сформировать список книг, которые требуют восстановления
-
-    //       При формировании отчётов предусмотреть возможность различных сортировок и
-    //       группировок
-
-    //       Для обработки данных в коллекциях использовать LINQ to Objects
-
-    //       Обеспечить невозможность инъекций кода
-
-    //       При реализации DAO использовать синглтон и фабрику (фабричный метод)
-    //       при реализации DAO рекомендуется использовать рефлексию
-    public static class CRUD<T> where T : class
+    /// <summary>
+    /// The class implements basic database operations such as Create, Read, Update and Delete
+    /// </summary>
+    /// <typeparam name="T">Generic parameter</typeparam>
+    public static class CRUD<T>
     {
-        public static string GetHeads(string[] headers, string auto)
+        /// <summary>
+        /// This method helps to get an string of headers for non-code injection
+        /// </summary>
+        /// <param name="objType">Object type</param>
+        /// <param name="spliter">Special character / string</param>
+        /// <returns>String of headers of table</returns>
+        public static string GetHeads(Type objType, string spliter)
         {
             string result = string.Empty;
-            foreach (var item in headers)
-                result += auto + item + ", ";
+            PropertyInfo[] properties = objType.GetProperties();
+            foreach (var item in properties)
+                result += spliter + item.Name + ", ";
+
+            int delete = result.Length - 2;
+            result = result.Substring(0, delete);
+
             return result;
         }
-        // TODO: headers - использовать как ToString объекта
-        public static void Create(object sender, string[] headers)
+
+        /// <summary>
+        /// Method for adding data to the database
+        /// </summary>
+        /// <param name="objType">Object type</param>
+        /// <param name="toAdd">The data to add</param>
+        public static void Create(Type objType, object[] toAdd)
         {
-            //Type type = sender.GetType();
-            //PropertyInfo[] properties = type.GetProperties();
+            PropertyInfo[] properties = objType.GetProperties();
+            try
+            {
+                ConnectionSettings.OpenConnection();
 
+                string query = $"INSERT INTO [{objType.Name}] " +
+                    $"({GetHeads(objType, "")}) VALUES ({GetHeads(objType, "@")})";
 
-            //string query = $"INSERT INTO [{sender.GetType().Name}] " +
-            //    $"({GetHeads(headers, "")}) VALUES ({GetHeads(headers, "@")}";
-            //SqlCommand command = new SqlCommand(query, ConnectionSettings.GetConnection());
+                SqlCommand command = new SqlCommand(query, ConnectionSettings.GetConnection());
 
-            //for (int i = 0; i < headers.Length; i++)
-            //{
-            //    command.Parameters.AddWithValue(headers[i], sender.);
-            //}
-            //command.Parameters.AddWithValue("Author", this.Author);
-            //command.Parameters.AddWithValue("Name", this.Name);
-            //command.Parameters.AddWithValue("Genre", this.Genre);
+                for (int i = 0; i < properties.Length; i++)
+                {
+                    command.Parameters.AddWithValue(properties[i].Name, toAdd[i]);
+                }
+                command.ExecuteNonQuery();
 
-            //command.ExecuteNonQuery();
+                Library.GetAll();
+                ConnectionSettings.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public static List<T> Read(Type objType)
+        /// <summary>
+        /// Method for reading data from the database
+        /// </summary>
+        /// <param name="objType">Object type</param>
+        /// <returns>Returns a list of objects in this table from the database</returns>
+        public static List<object> Read(Type objType)
         {
             ConnectionSettings.OpenConnection();
             SqlDataReader dataReader = null;
-            List<T> list = new List<T>();
+            List<object> list = new List<object>();
 
             try
             {
                 string query = $"SELECT * FROM {objType.Name}";
+
                 SqlCommand command = new SqlCommand(query, ConnectionSettings.GetConnection());
 
                 dataReader = command.ExecuteReader();
 
                 while (dataReader.Read())
                 {
-                    object obj = Activator.CreateInstance(objType);
+                    var obj = Activator.CreateInstance(objType);
                     obj = Entity.SetObject(obj, dataReader);
-                    list.Add((T)obj);
+                    list.Add(obj);
                 }
+
+                ConnectionSettings.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -92,14 +107,75 @@ namespace Library.DataBase.CRUD
 
         }
 
-        public static void Update()
+        /// <summary>
+        /// Changing data in the database
+        /// </summary>
+        /// <param name="objType">Object type</param>
+        /// <param name="toUpdate">The data to update (the first object is the number of the element to be changed)</param>
+        public static void Update(Type objType, object[] toUpdate)
         {
+            PropertyInfo[] properties = objType.GetProperties();
+            try
+            {
+                ConnectionSettings.OpenConnection();
 
+                string updateSet = string.Empty;
+
+                for (int i = 1; i < toUpdate.Length; i++)
+                {
+                    updateSet += properties[i].Name + " = @" + properties[i].Name;
+                    if (i + 1 != toUpdate.Length)
+                        updateSet += ", ";
+                }
+
+                string query = $"UPDATE [{objType.Name}] " +
+                    $"SET {updateSet} WHERE ({properties[0].Name} = @{properties[0].Name})";
+
+                SqlCommand command = new SqlCommand(query, ConnectionSettings.GetConnection());
+
+                for (int i = 0; i < properties.Length; i++)
+                {
+                    command.Parameters.AddWithValue(properties[i].Name, toUpdate[i]);
+                }
+                command.ExecuteNonQuery();
+
+                Library.GetAll();
+                ConnectionSettings.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception (ex.Message);
+            }
         }
 
-        public static void Delete()
+        /// <summary>
+        /// Removing data from the database
+        /// </summary>
+        /// <param name="objType">Object type</param>
+        /// <param name="objId">Element number in the table</param>
+        public static void Delete(Type objType, int objId)
         {
+            PropertyInfo[] properties = objType.GetProperties();
+            try
+            {
+                ConnectionSettings.OpenConnection();
 
+                string query = $"DELETE FROM [{objType.Name}] " +
+                    $"WHERE ({properties[0].Name} = @{properties[0].Name})";
+
+                SqlCommand command = new SqlCommand(query, ConnectionSettings.GetConnection());
+
+                command.Parameters.AddWithValue(properties[0].Name, objId);
+                command.ExecuteNonQuery();
+
+                Library.GetAll();
+                ConnectionSettings.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

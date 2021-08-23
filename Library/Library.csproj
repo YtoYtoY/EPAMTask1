@@ -49,6 +49,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -64,6 +67,10 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftOfficeCore.15.0.0\lib\net35\Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -73,10 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Constants.cs" />
-    <Compile Include="Classes\Exceptions.cs" />
     <Compile Include="DataBase\ConnectionSettings.cs" />
     <Compile Include="DataBase\CRUD\CRUD.cs" />
+    <Compile Include="DataBase\ORM\AuthorBooks.cs" />
+    <Compile Include="DataBase\ORM\Authors.cs" />
     <Compile Include="DataBase\ORM\Entity.cs" />
+    <Compile Include="DataBase\ORM\Genre.cs" />
     <Compile Include="DataBase\ORM\States.cs" />
     <Compile Include="DataBase\ORM\Subscribers.cs" />
     <Compile Include="DataBase\ORM\Books.cs" />
@@ -88,8 +97,9 @@
     <Compile Include="Parser\TEXT.cs" />
     <Compile Include="Parser\XLSX.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\Read_UnitTest.cs" />
+    <Compile Include="Tests\CRUD_UnitTest.cs" />
     <Compile Include="Tests\Parser_UnitTest.cs" />
+    <Compile Include="Tests\Queries_UnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -102,7 +112,10 @@
     <Content Include="DataBase\LibraryDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Tests\SQLScripts\SQLQuery_AB.sql" />
+    <Content Include="Tests\SQLScripts\SQLQuery_Authors.sql" />
     <Content Include="Tests\SQLScripts\SQLQuery_Books.sql" />
+    <Content Include="Tests\SQLScripts\SQLQuery_Genre.sql" />
     <Content Include="Tests\SQLScripts\SQLQuery_SB.sql" />
     <Content Include="Tests\SQLScripts\SQLQuery_States.sql" />
     <Content Include="Tests\SQLScripts\SQLQuery_Subscribers.sql" />

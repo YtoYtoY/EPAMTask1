@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library.DataBase.ORM
 {
+    /// <summary>
+    /// Table - Subskribers-Books
+    /// </summary>
     public class SubscriberBooks : Entity
     {
         public SubscriberBooks(int semiId, int subskriberId, int bookId, DateTime dateOfTake, bool isTaken, int stateId)
@@ -33,17 +36,37 @@ namespace Library.DataBase.ORM
 
         public override string ToString()
         {
-            return base.ToString();
+            return "{ " +
+                "Id: " + SemiId +
+                ", Subskriber id: " + SubskriberId +
+                ", Book id: " + BookId +
+                ", Date of take: " + DateOfTake +
+                ", Is taken: " + IsTaken +
+                ", State id: " + StateId +
+                "} ";
         }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            var hash = new HashCode();
+            hash.Add(SemiId);
+            hash.Add(SubskriberId);
+            hash.Add(BookId);
+            hash.Add(DateOfTake);
+            hash.Add(IsTaken);
+            hash.Add(StateId);
+            return hash.ToHashCode();
         }
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            return obj is SubscriberBooks books &&
+                   SemiId == books.SemiId &&
+                   SubskriberId == books.SubskriberId &&
+                   BookId == books.BookId &&
+                   DateOfTake == books.DateOfTake &&
+                   IsTaken == books.IsTaken &&
+                   StateId == books.StateId;
         }
     }
 }

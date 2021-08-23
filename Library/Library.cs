@@ -12,17 +12,46 @@ namespace Library
 {
     public class Library
     {
+        /// <summary>
+        /// Author-Books table information
+        /// </summary>
+        public static IEnumerable<object> AuthorBooks { get; set; }
 
-        public static IEnumerable<Entity> StatesList { get; set; }
-        public static IEnumerable<Entity> SubscribersList { get; set; }
-        public static IEnumerable<Entity> BooksList { get; set; } 
-        public static IEnumerable<Entity> SBList { get; set; }
+        /// <summary>
+        /// Authors table information
+        /// </summary>
+        public static IEnumerable<object> Authors { get; set; }
 
+        /// <summary>
+        /// Genre table information
+        /// </summary>
+        public static IEnumerable<object> Genre { get; set; }
 
+        /// <summary>
+        /// States table information
+        /// </summary>
+        public static IEnumerable<object> StatesList { get; set; }
+
+        /// <summary>
+        /// Subskribers table information
+        /// </summary>
+        public static IEnumerable<object> SubscribersList { get; set; }
+
+        /// <summary>
+        /// Books table information
+        /// </summary>
+        public static IEnumerable<object> BooksList { get; set; }
+
+        /// <summary>
+        /// Subskribers-Books table information
+        /// </summary>
+        public static IEnumerable<object> SubscribersBooksList { get; set; }
+
+        /// <summary>
+        /// Method for defining all lists of entities
+        /// </summary>
         public static void GetAll()
         {
-            ConnectionSettings.OpenConnection();
-
             int propIndex = 0;
             Type baseType = typeof(Entity);
             IEnumerable<Type> entityTypes = Assembly.GetAssembly(baseType).GetTypes().Where(type => type.IsSubclassOf(baseType));
@@ -31,12 +60,12 @@ namespace Library
             foreach (var item in entityTypes)
             {
                 Library library = new Library();
-                List<Entity> tmp = CRUD<Entity>.Read(item);
+
+                var tmp = CRUD<Entity>.Read(item);
+
                 libraryLists[propIndex].SetValue(library, tmp);
                 propIndex++;
             }
-
-            ConnectionSettings.CloseConnection();
         }
 
         

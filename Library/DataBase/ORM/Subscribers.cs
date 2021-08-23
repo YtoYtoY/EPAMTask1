@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Library.DataBase.ORM
 {
+    /// <summary>
+    /// Table - Subskriber
+    /// </summary>
     public class Subscribers : Entity
     {
         public Subscribers()
@@ -25,20 +28,34 @@ namespace Library.DataBase.ORM
         public string Sex { get; set; }
         public DateTime DateOfBirth { get; set; }
 
-
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            return obj is Subscribers subscribers &&
+                   Id == subscribers.Id &&
+                   FullName == subscribers.FullName &&
+                   Sex == subscribers.Sex &&
+                   DateOfBirth == subscribers.DateOfBirth;
         }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            var hash = new HashCode();
+            hash.Add(Id);
+            hash.Add(FullName);
+            hash.Add(Sex);
+            hash.Add(DateOfBirth);
+            return hash.ToHashCode();
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            return "{ " +
+                "Id: " + Id +
+                ", Name: " + FullName +
+                ", Sex: " + Sex +
+                ", Date of birth: " + DateOfBirth +
+                "} ";
         }
+
     }
 }

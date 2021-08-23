@@ -22,3 +22,5 @@ C:\Users\User\Desktop\Work\EPAM\TASK_1\EPAMTask1\Library\obj\Debug\Library.cspro
 C:\Users\User\Desktop\Work\EPAM\TASK_1\EPAMTask1\Library\obj\Debug\Library.dll
 C:\Users\User\Desktop\Work\EPAM\TASK_1\EPAMTask1\Library\obj\Debug\Library.pdb
 C:\Users\User\Desktop\Work\EPAM\TASK_1\EPAMTask1\Library\obj\Debug\Library.csproj.ResolveComReference.cache
+C:\Users\User\Desktop\Work\EPAM\TASK_1\EPAMTask1\Library\bin\Debug\Microsoft.Bcl.HashCode.dll
+C:\Users\User\Desktop\Work\EPAM\TASK_1\EPAMTask1\Library\bin\Debug\Microsoft.Bcl.HashCode.xml

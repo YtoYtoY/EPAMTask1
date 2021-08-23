@@ -1,55 +1,92 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
-using Microsoft.CSharp;
+using System.Runtime.InteropServices;
+using Library.DataBase.ORM;
+using Microsoft.Office.Core;
+using Microsoft.Office.Interop.Excel;
 
 namespace Library.Parser
 {
+    /// <summary>
+    /// Class for saving information to an Excel file
+    /// </summary>
     public class XLSX : Parser
     {
-        public void SetToFile(string path, Delegate methods)
+        /// <summary>
+        /// Method for saving delegate information to .xlsx files
+        /// </summary>
+        /// <param name="path">Path to file</param>
+        /// <param name="empty">Delegate for reports without parameters</param>
+        /// <param name="date">Delegate for reports with period parameters</param>
+        /// <param name="first">Beginning of period</param>
+        /// <param name="last">End of period</param>
+        public void SetToFile(string path, ForExecutionEmpty empty, ForExecutionDate date, DateTime first, DateTime last)
         {
-            Excel.Application ex = new Microsoft.Office.Interop.Excel.Application();
-            ex.Visible = true;
-            ex.SheetsInNewWorkbook = 1;
-            Excel.Workbook workBook = ex.Workbooks.Add(Type.Missing);
-            ex.DisplayAlerts = false;
-            Excel.Worksheet sheet = (Excel.Worksheet)workBook.Sheets[1]; ;
+            Workbook m_workBook = null;
+            Worksheet m_workSheet = null;
+            Excel._Application m_app = null;
 
-            
-            string text = string.Empty;
-            var delegates = methods.GetInvocationList();
-            string[][] matrix;
-            foreach (var item in delegates)
+            try
             {
+                m_app = new Excel.Application();
+                m_app.Visible = false;
+                m_app.UserControl = true;
+                m_workBook = m_app.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
+                m_workSheet = m_app.ActiveSheet as Worksheet;
 
-                text += ((ForExecution)item)();
-                string[] strings = text.Split('\n');
-                matrix = new string[strings.Length][];
-                for (int i = 0; i < strings.Length; i++)
-                {
-                    matrix[i] = strings[i].Split(';');
-                }
+                var emptyMethods = empty.GetInvocationList();
+                var dateMethods = date.GetInvocationList();
+                int index = 0;
 
-                for (int i = 1; i <= strings.Length; i++)
+                foreach (var item in emptyMethods)
                 {
-                    for (int j = 1; j < matrix[0].Length; j++)
+                    IDictionary<string, IEnumerable<Books>> dict =
+                                (IDictionary<string, IEnumerable<Books>>)item.DynamicInvoke();
+
+                    foreach (var cell in dict)
                     {
-                        sheet.Cells[i, j] = matrix[i][j];
+                        m_workSheet.Cells[index, 0] = cell.Key;
+                        for (int i = 1; i < cell.Value.Count() + 1; i++)
+                        {
+                            m_workSheet.Cells[index, i] = cell.Value.ElementAt(i - 1);
+                            index++;
+                        }
                     }
                 }
 
-            }
-            workBook.SaveAs(path, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
-                false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
-                Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                foreach (var item in dateMethods)
+                {
+                    IDictionary<string, IEnumerable<Books>> dict =
+                                (IDictionary<string, IEnumerable<Books>>)item.DynamicInvoke(first, last);
 
-            workBook.Close();
-            ex.Quit();
+                    foreach (var cell in dict)
+                    {
+                        m_workSheet.Cells[index, 0] = cell.Key;
+                        for (int i = 1; i < cell.Value.Count() + 1; i++)
+                        {
+                            m_workSheet.Cells[index, i] = cell.Value.ElementAt(i - 1);
+                            index++;
+                        }
+                    }
+                }
+                m_workBook.SaveAs(path);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                m_workBook.Close(false, "", Type.Missing);
+                m_app.Quit();
+
+                m_workBook = null;
+                m_workSheet = null;
+                m_app = null;
+                GC.Collect();
+            }
         }
     }
 }
