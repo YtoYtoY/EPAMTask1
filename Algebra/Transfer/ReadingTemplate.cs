@@ -31,9 +31,12 @@ namespace Algebra.Transfer
                     .Cast<Match>()
                     .Select(x => double.Parse(x.Value))
                     .ToArray();
-                result[i] = tmpArr;
-            }
+                if (tmpArr.Length != 0)
+                    result[i] = tmpArr;
+                else
+                    result = result.Take(result.Length - 1).ToArray();
 
+            }
             return result;
         }
 

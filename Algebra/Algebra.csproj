@@ -55,6 +55,7 @@
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\Exceptions.cs" />
     <Compile Include="Interfaces\Connection.cs" />
+    <Compile Include="SLAE\IterationMethod.cs" />
     <Compile Include="SLAE\GaussMethod.cs" />
     <Compile Include="SLAE\LUDMethod.cs" />
     <Compile Include="SLAE\SolveMethod.cs" />
@@ -70,6 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Tests\mytest4.A" />
+    <None Include="Tests\mytest4.B" />
     <None Include="Tests\test1.A" />
     <None Include="Tests\test1.B" />
     <None Include="Tests\test1.des" />

@@ -73,10 +73,6 @@ namespace Algebra.SLAE
 				}
 				Answer[i] = c / Mas[i, i];
 			}
-			for (int p = 0; p < Answer.Length; p++)
-            {
-				Answer[p] = Math.Round(Answer[p], 7);
-            }
 		}
 	}
 }

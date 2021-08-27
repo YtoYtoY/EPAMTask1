@@ -7,7 +7,7 @@ using Algebra.SLAE;
 
 namespace Algebra.Transfer
 {
-    public delegate void EventDelegate(object sender, EventArgs e);
+    public delegate void EventDelegate();
 
     public abstract class ServerTcp : Connection
     {
@@ -22,15 +22,9 @@ namespace Algebra.Transfer
 
         public void InvokeIvent()
         {
-            if (CurrentMethod.LeftPart != null && CurrentMethod.RightPart != null)
-            {
-                GoToSolve?.Invoke(this, new EventArgs());
-                CurrentMethod.TrySolve(CurrentMethod.LeftPart, CurrentMethod.RightPart);
-            }
-            else
-            {
-                throw new Exception(Exceptions.MethodProcessingError);
-            }
+            eventFlag = false;
+            GoToSolve?.Invoke();
+            CurrentMethod.TrySolve(CurrentMethod.LeftPart, CurrentMethod.RightPart);
         }
 
         public void Finish(Socket listener)
@@ -49,6 +43,5 @@ namespace Algebra.Transfer
         }
 
         public abstract void Request(SolveMethod method);
-        public abstract void Response(Socket tcpSocket, string answer);
     }
 }

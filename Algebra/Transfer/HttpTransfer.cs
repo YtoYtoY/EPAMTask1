@@ -1,5 +1,6 @@
 ﻿using Algebra.SLAE;
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -8,56 +9,37 @@ namespace Algebra.Transfer
 {
     public class HttpTransfer : ServerTcp
     {
-        public string[] requestString { get; set; }
+        public string[] requestString = new string[2];
         public override async void Request(SolveMethod method)
         {
             CurrentMethod = method;
             int index = 0;
-            while(eventFlag || index + 1 < requestString.Length)
+            while (eventFlag)
             {
-                try
-                {
-                    HttpWebRequest webRequest = HttpWebRequest.CreateHttp(requestString[index]);
-                    GoToSolve += LeftPart_Action;
-                    GoToSolve += RightPart_Action;
+                
+                GoToSolve += LeftPart_Action;
+                GoToSolve += RightPart_Action;
 
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
+
+                InvokeIvent();
             }
-            InvokeIvent();
         }
 
-        private async void LeftPart_Action(object sender, EventArgs e)
+        private async void LeftPart_Action()
         {
-            await Task.Run(() =>
-            {
-                if (CurrentMethod.LeftPart == null && CurrentMethod.RightPart == null)
-                {
-
-                    //CurrentMethod.LeftPart = ReadingTemplate.GetCoefficientsByTemplate(data.ToString(), "\n");
-                }
-            });
+            HttpWebRequest webRequest = HttpWebRequest.CreateHttp(requestString[0]);
+            var webResponse = (HttpWebResponse)webRequest.GetResponse();
+            var responseString = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
+            CurrentMethod.LeftPart = ReadingTemplate.GetCoefficientsByTemplate(responseString.ToString(), "\n");
         }
 
-        private async void RightPart_Action(object sender, EventArgs e)
+        private void RightPart_Action()
         {
-            await Task.Run(() =>
-            {
-                if (CurrentMethod.LeftPart != null)
-                {
-
-                    //CurrentMethod.RightPart = ReadingTemplate.GetUpshotByTemplate(data.ToString());
-                }
-            });
+            HttpWebRequest webRequest = HttpWebRequest.CreateHttp(requestString[1]);
+            var webResponse = (HttpWebResponse)webRequest.GetResponse();
+            var responseString = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
+            CurrentMethod.RightPart = ReadingTemplate.GetUpshotByTemplate(responseString.ToString());
         }
 
-
-        public override void Response(Socket tcpSocket, string answer)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

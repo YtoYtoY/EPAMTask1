@@ -14,8 +14,18 @@ namespace Algebra.Tests
     public class Transfer_UnitTest
     {
         [TestMethod]
-        public void Tcp_UnitMethod()
+        public void Http_UnitMethod()
         {
+            HttpTransfer http = new HttpTransfer();
+            http.requestString[0] = "https://raw.githubusercontent.com/YtoYtoY/EpamTasks/master/Algebra/Tests/test1.A";
+            http.requestString[1] = "https://raw.githubusercontent.com/YtoYtoY/EpamTasks/master/Algebra/Tests/test1.B";
+
+            var solveMethod = new IterationMethod();
+            http.Request(solveMethod);
+
+            var otvet = solveMethod.Answer;
+
+            Assert.IsTrue(true);
         }
     }
 }

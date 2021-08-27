@@ -30,15 +30,10 @@ namespace Algebra.Transfer
             }
             InvokeIvent();
             string answer = ReadingTemplate.SetToString(CurrentMethod.Answer);
-            Response(listener, answer);
-        }
-
-        public override void Response(Socket listener, string answer)
-        {
             listener.Send(Encoding.UTF8.GetBytes(answer));
         }
 
-        public async void LeftPart_Action(object sender, EventArgs e)
+        public async void LeftPart_Action()
         { 
             await Task.Run(() =>
             {
@@ -55,7 +50,7 @@ namespace Algebra.Transfer
             });
         }
 
-        public async void RightPart_Action(object sender, EventArgs e)
+        public async void RightPart_Action()
         {
             await Task.Run(() =>
             {

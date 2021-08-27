@@ -35,6 +35,8 @@ namespace Algebra.Classes
         public const int pause = 10000;
 
         public const int listenerLimit = 2;
+
+        public const double epsilonSlae = 0.000001;
     }
 
     
