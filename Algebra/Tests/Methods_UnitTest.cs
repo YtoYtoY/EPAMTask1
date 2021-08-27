@@ -17,7 +17,7 @@ namespace Algebra.Tests
 
             double[] rightPart = new double[3] { 6, 2.1, 2.1 };
 
-            LUDecomposition lud = new LUDecomposition(leftPart, rightPart);
+            LUDMethod lud = new LUDMethod(leftPart, rightPart);
             _ = lud.Answer;
             // 0.33
             // 0.30

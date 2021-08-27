@@ -9,12 +9,13 @@ namespace Algebra.SLAE
     /// <summary>
     /// LU Decomposition method
     /// </summary>
-    public class LUDecomposition : SolveMethod
+    public class LUDMethod : SolveMethod
     {
-        public LUDecomposition(double[][] leftPart, double[] rightPart)
+        public LUDMethod(double[][] leftPart, double[] rightPart)
             : base(leftPart, rightPart)
         {
         }
+        public LUDMethod() { }
 
         public override void TrySolve(double[][] leftPart, IReadOnlyList<double> rightPart)
         {

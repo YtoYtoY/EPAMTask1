@@ -54,17 +54,19 @@
   <ItemGroup>
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\Exceptions.cs" />
-    <Compile Include="Interfaces\Transfer.cs" />
+    <Compile Include="Interfaces\Connection.cs" />
     <Compile Include="SLAE\GaussMethod.cs" />
-    <Compile Include="SLAE\LUDecomposition.cs" />
+    <Compile Include="SLAE\LUDMethod.cs" />
     <Compile Include="SLAE\SolveMethod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SLAE\CramerMethod.cs" />
     <Compile Include="Tests\Methods_UnitTest.cs" />
     <Compile Include="Tests\Solve_UnitTest.cs" />
     <Compile Include="Tests\Transfer_UnitTest.cs" />
     <Compile Include="Transfer\HttpTransfer.cs" />
     <Compile Include="Transfer\ReadingTemplate.cs" />
-    <Compile Include="Transfer\TcpIpTransfer.cs" />
+    <Compile Include="Transfer\ServerTcp.cs" />
+    <Compile Include="Transfer\TcpTransfer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

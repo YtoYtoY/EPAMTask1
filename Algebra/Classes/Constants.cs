@@ -20,12 +20,12 @@ namespace Algebra.Classes
         /// <summary>
         /// Server ip-address
         /// </summary>
-        public static readonly IPAddress localAddress = IPAddress.Any;
+        public const string ipAddres = "127.0.0.1";
 
         /// <summary>
         /// Limitation for received and sent files
         /// </summary>
-        public const int byteLimit = 8000;
+        public const int byteLimit = 8080;
 
         /// <summary>
         /// A regular expression to read double numbers from a file
@@ -33,5 +33,9 @@ namespace Algebra.Classes
         public const string readingDoublePattern = @"-?\d+(?:\,\d+)?";
 
         public const int pause = 10000;
+
+        public const int listenerLimit = 2;
     }
+
+    
 }

@@ -16,6 +16,7 @@ namespace Algebra.SLAE
             : base(leftPart, rightPart)
         {
         }
+		public GaussMethod() { }
 
 		public override void TrySolve(double[][] leftPart, IReadOnlyList<double> rightPart)
 		{

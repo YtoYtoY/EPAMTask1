@@ -9,22 +9,10 @@ using System.Threading.Tasks;
 namespace Algebra.SLAE
 {
     /// <summary>
-    /// Delegate for event
-    /// </summary>
-    /// <param name="sender">Current object</param>
-    /// <param name="e">EventArgs object</param>
-    public delegate void EventDelegate(object sender, EventArgs e);
-
-    /// <summary>
     /// Abstract class describing the method for solving SLAE
     /// </summary>
     public abstract class SolveMethod
     {
-        /// <summary>
-        /// Event to check and solve the equation
-        /// </summary>
-        public event EventDelegate GoToSolve = null;
-
         /// <summary>
         /// Array of resulting coefficients
         /// </summary>
@@ -33,12 +21,12 @@ namespace Algebra.SLAE
         /// <summary>
         /// "Left" coefficients of the equation (A)
         /// </summary>
-        protected double[][] LeftPart { get; set; }
+        public double[][] LeftPart { get; set; }
 
         /// <summary>
         /// "Right" coefficients of the equation (B)
         /// </summary>
-        protected double[] RightPart { get; set; }
+        public double[] RightPart { get; set; }
 
         /// <summary>
         /// The number of elements in the array of "right" coefficients
@@ -57,39 +45,9 @@ namespace Algebra.SLAE
 
             N = RightPart.GetLength(0);
             Answer = new double[N];
-
         }
 
-        /// <summary>
-        /// The method raises an event
-        /// </summary>
-        /// <param name="left">Matrix</param>
-        /// <param name="right">Array</param>
-        public void InvokeEvent(double[][] left, double[] right)
-        {
-
-            if (left != null && right != null)
-            {
-                if(LinearCheck(left, right))
-                {
-                    GoToSolve?.Invoke(this, new EventArgs());
-                    TrySolve(left, right);
-                    return;
-                }
-            }
-            throw new Exception(Exceptions.NonLinearException);
-        }
-
-        /// <summary>
-        /// Checking for the correctness of the equation
-        /// </summary>
-        /// <param name="leftPart">coefficients of the equation (A)</param>
-        /// <param name="rightPart">coefficients of the equation (B)</param>
-        /// <returns>Return true if the lengths of the arrays are the same</returns>
-        public bool LinearCheck(double[][] leftPart, double[] rightPart)
-        {
-            return (leftPart[0].Length == rightPart.Length);
-        }
+        protected SolveMethod() { }
 
         /// <summary>
         /// An abstract method for solving an equation
