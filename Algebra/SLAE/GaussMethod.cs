@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Algebra.SLAE
 {
 	/// <summary>
-	/// Gauss method
+	/// Gauss method for solving SLAEs
 	/// </summary>
 	public class GaussMethod : SolveMethod
     {
@@ -25,6 +25,8 @@ namespace Algebra.SLAE
 			int i = 1;
 			int j = 0;
 			double[,] Mas = new double[a, a + 1];
+
+			Answer = new double[a];
 
 			for (i = 0; i < a; i++)
 			{

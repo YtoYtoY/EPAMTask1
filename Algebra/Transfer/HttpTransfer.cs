@@ -1,45 +1,45 @@
-﻿using Algebra.SLAE;
+﻿using Algebra.Classes;
+using Algebra.SLAE;
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Algebra.Transfer
 {
+    /// <summary>
+    /// Receiving client data via http link
+    /// </summary>
     public class HttpTransfer : ServerTcp
     {
-        public string[] requestString = new string[2];
-        public override async void Request(SolveMethod method)
+        /// <summary>
+        /// Links for data
+        /// </summary>
+        public string[] requestString = new string[Constants.listenerLimit];
+
+        /// <summary>
+        /// Request for data
+        /// </summary>
+        /// <param name="method">Method for dolving SLAE</param>
+        public override void Request(SolveMethod method)
         {
-            CurrentMethod = method;
+            _CurrentMethod = method;
             int index = 0;
-            while (eventFlag)
+
+            while (index < Constants.listenerLimit)
             {
-                
-                GoToSolve += LeftPart_Action;
-                GoToSolve += RightPart_Action;
-
-
-                InvokeIvent();
+                HttpWebRequest webRequest = HttpWebRequest.CreateHttp(requestString[index]);
+                var webResponse = (HttpWebResponse)webRequest.GetResponse();
+                var stream = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
+                _data[index] = new StringBuilder(stream);
+                index++;
             }
-        }
+            GoToSolve += LeftPart_Action;
+            GoToSolve += RightPart_Action;
 
-        private async void LeftPart_Action()
-        {
-            HttpWebRequest webRequest = HttpWebRequest.CreateHttp(requestString[0]);
-            var webResponse = (HttpWebResponse)webRequest.GetResponse();
-            var responseString = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
-            CurrentMethod.LeftPart = ReadingTemplate.GetCoefficientsByTemplate(responseString.ToString(), "\n");
+            InvokeIvent();
         }
-
-        private void RightPart_Action()
-        {
-            HttpWebRequest webRequest = HttpWebRequest.CreateHttp(requestString[1]);
-            var webResponse = (HttpWebResponse)webRequest.GetResponse();
-            var responseString = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
-            CurrentMethod.RightPart = ReadingTemplate.GetUpshotByTemplate(responseString.ToString());
-        }
-
     }
 }

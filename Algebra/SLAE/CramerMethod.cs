@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Algebra.SLAE
 {
+    /// <summary>
+    /// Cramer's method for solving SLAEs
+    /// </summary>
     public class CramerMethod : SolveMethod
     {
         public CramerMethod(double[][] leftPart, double[] rightPart) : base(leftPart, rightPart)

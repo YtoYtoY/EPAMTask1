@@ -12,7 +12,6 @@ namespace Algebra.Classes
     public static class Exceptions
     {
         public const string NonLinearException = "The equation did not pass the linearity test!";
-
         public const string MethodProcessingError = "The object has not been processed";
     }
 }

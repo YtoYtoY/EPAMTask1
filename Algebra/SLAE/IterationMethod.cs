@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Algebra.SLAE
 {
+    /// <summary>
+    /// Simple Iteration Method for solving SLAEs
+    /// </summary>
     public class IterationMethod : SolveMethod
     {
         public IterationMethod(double[][] leftPart, double[] rightPart) : base(leftPart, rightPart)
@@ -34,6 +37,7 @@ namespace Algebra.SLAE
             int length = leftPart.GetLength(0);
             double[] p = new double[length];
             double[] x = new double[length];
+            
 
             double[][] alpha = new double[length][];
             double[] beta = new double[length];
@@ -66,6 +70,8 @@ namespace Algebra.SLAE
                 }
                 iter++;
             } while (!Converge(ref x, ref p));
+
+            Answer = x;
         }
     }
 }

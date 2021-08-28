@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Algebra.Classes
 {
     /// <summary>
-    /// Constants static class
+    /// Constants class
     /// </summary>
     public static class Constants
     {
@@ -32,10 +32,14 @@ namespace Algebra.Classes
         /// </summary>
         public const string readingDoublePattern = @"-?\d+(?:\,\d+)?";
 
-        public const int pause = 10000;
-
+        /// <summary>
+        /// Limit of transferred files
+        /// </summary>
         public const int listenerLimit = 2;
 
+        /// <summary>
+        /// Accuracy for some methods
+        /// </summary>
         public const double epsilonSlae = 0.000001;
     }
 

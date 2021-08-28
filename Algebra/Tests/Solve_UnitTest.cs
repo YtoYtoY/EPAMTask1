@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Algebra.SLAE;
 using Algebra.Transfer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -34,7 +35,8 @@ namespace Algebra.Tests
                     right = ReadingTemplate.GetUpshotByTemplate(text);
                 }
 
-                GaussMethod gauss = new GaussMethod(left, right);
+                var gauss = new GaussMethod();
+                gauss.TrySolve(left, right);
                 double[] answer = gauss.Answer;
 
                 using (StreamReader reader = File.OpenText(pathToX))
@@ -43,7 +45,10 @@ namespace Algebra.Tests
                     x = ReadingTemplate.GetUpshotByTemplate(text);
                 }
 
-                //Assert.AreNotEqual(x, answer);
+                CollectionAssert.AreEquivalent(
+                    x.Select(i => (int)i).ToArray(),
+                    answer.Select(i => (int)i).ToArray()
+                    );
             }
             catch (Exception e)
             {
